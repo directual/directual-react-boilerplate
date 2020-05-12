@@ -59,12 +59,12 @@ function App() {
                     path: '/',
                     icon: 'info'
                   },
-                  {
-                    type: "link",
-                    title: 'Table view',
-                    path: '/table',
-                    icon: 'database'
-                  },
+                  // {
+                  //   type: "link",
+                  //   title: 'Table view',
+                  //   path: '/table',
+                  //   icon: 'database'
+                  // },
                   {
                     type: "link",
                     title: 'Cards view',

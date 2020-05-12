@@ -3,14 +3,18 @@ import { Cards, PageHeader } from '../UI-components/directual-design'
 
 
 export function CardsView() {
-    return (
-      <div>
-        <PageHeader icon="cards">Cards view</PageHeader>
-        <Cards 
-          structure='Books'
-          endpoint='getBooks'
-
-        />
-      </div>
-    )
+  return (
+    <Cards
+      header='Great minds'
+      structure='Authors'
+      endpoint='getAuthors'
+      title='name'
+      titleDescription='country'
+      description='description'
+      descLength={80}
+      width='330px'
+      photo='photo'
+      photoHeigh='250px'
+    />
+  )
 }

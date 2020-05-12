@@ -18,7 +18,7 @@ export default function DirectualHeader() {
             <div className="gitHub-link">
                 <img src={Github_logo} />
                 <p className="desc">
-                    Directual React boilerplate v 0.1.0<br /><a href="">See it on GitHub</a>
+                    Directual React boilerplate v 0.1.0<br /><a href="https://github.com/directual/directual-react-boilerplate">See it on GitHub</a>
                 </p>
             </div>
             <div className="directual-link">

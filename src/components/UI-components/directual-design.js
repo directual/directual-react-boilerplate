@@ -74,28 +74,68 @@ export function Table(props) {
     )
 }
 
-export function Card(props) {
-    const [hideDesc, setHideDesc] = useState(false);
+export function HideTextBlock(props) {
+    const [expandText, setExpandText] = useState(false);
+    const [textLength, setTextLength] = useState(props.textLength || 120);
 
-    let descLength = 120;
-    props.descLength && (descLength = props.descLength)
-    {(props.description.length > descLength) && setHideDesc(true)}
+    const expand = () => {
+        setExpandText(true);
+        setTextLength(3000);
+    }
+
+    const hide = () => {
+        setExpandText(false);
+        setTextLength(props.textLength || 120);
+    }
 
     return (
-        <div className="dd-card">
-            <div class="card-content">
+        <div className="dd-hide-text">
+            {(props.children.length <= textLength) && props.children}
+            {(props.children.length > textLength) && props.children.substr(0, textLength) + '...'}
+            {(props.children.length > textLength) && !expandText &&
+                <div className="expand-text icon icon-down" onClick={expand}>
+                    Expand</div>
+            }
+            {expandText &&
+                <div className="expand-text icon icon-up" onClick={hide}>
+                    Hide</div>
+            }
+        </div>
+    )
+}
+
+export function Labels(props) {
+    return (
+        <ul className="dd-labels">
+            {props.labels[0].length > 0 && props.labels.map(label =>
+                <li className="dd-label">{label}</li>
+            )}
+        </ul>
+    )
+}
+
+export function Card(props) {
+    const photoHeigh = props.photoHeigh || '150px'
+    return (
+        <div className="dd-card" style={{ maxWidth: props.width }}>
+            {props.photo &&
+                <div className="card-photo"
+                    style={
+                        {
+                            backgroundImage: `url(${props.photo})`,
+                            height: photoHeigh
+                        }}>
+                </div>}
+            <div className="card-content">
                 <h3 className="card-title">{props.title}</h3>
                 <div className="card-title-description">{props.titleDescription}</div>
                 <div className="card-description">
-                    {(props.description.length > descLength) && props.description.substr(0, 120) + '...'}
+                    <HideTextBlock textLength={props.descLength}>
+                        {props.description}
+                    </HideTextBlock>
                 </div>
-                <ul className="dd-labels">
-                    <li>Spaghetti</li>
-                    <li>Parmesan</li>
-                    <li>Eggs</li>
-                    <li>Dried brisket</li>
-                    <li>Black pepper</li>
-                </ul>
+
+                <Labels labels={props.labels} />
             </div>
         </div>
     )
@@ -104,28 +144,54 @@ export function Card(props) {
 export function Cards(props) {
     const [payload, setPayload] = useState([]);
     const [pageInfo, setPageInfo] = useState({});
-    const [loading, setLoading] = useState(true);
-    const auth = useAuth();
+    const [crardsDisplay, setCrardsDisplay] = useState([])
     const [pageNum, setPageNum] = useState(0);
-    const [pageSize, setPageSize] = useState(10);
+    const [loading, setLoading] = useState(true);
+    const [badRequest, setBadRequest] = useState();
+    const [lazyLoading, setLazyLoading] = useState(false)
 
-    // useEffect(() => {
-    //     reload()
-    // }, [])
+    const auth = useAuth();
 
-    function reload() {
+    let Arr1;
+    let Arr2;
+    let Arr3;
+    let step = 2
+
+    Arr1 = [{a:1},{b:2}];
+    Arr2 = [{c:1},{d:2}];
+    Arr3 = Object.assign(Arr1, Arr2);
+    console.log(Arr1)
+    console.log(Arr2)
+    console.log(Arr3)
+
+    useEffect(() => {
+        console.log(pageNum)
+        getData() 
+    }, [pageNum])
+
+    let Arr
+
+    useEffect(() => {
+        Arr = crardsDisplay
+        Arr = Object.assign(Arr,payload)
+        setCrardsDisplay(Arr)
+    }, [payload])
+
+    function getData() {
         api
             // Data structure
             .structure(props.structure)
             // GET request + query params:
-            .getData(props.endpoint, { sessionID: auth.sessionID, page: pageNum, pageSize: pageSize })
+            .getData(props.endpoint, { sessionID: auth.sessionID, page: pageNum, pageSize: step })
             .then((response) => {
                 setPayload(response.payload)
                 setPageInfo(response.pageInfo)
                 setLoading(false)
+                setLazyLoading(false)
             })
             .catch((e) => {
                 setLoading(false)
+                setLazyLoading(false)
                 if (!e.response) {
                     //check you API endpoint, you must enable CORS header in settings
                     console.log('check you API endpoint, you must enable CORS header in settings')
@@ -137,16 +203,33 @@ export function Cards(props) {
             })
     }
 
+    const loadMore = () => {
+        setLazyLoading(true)
+        setPageNum(pageNum + 1)
+    }
+
     return (
         <React.Fragment>
+            <PageHeader icon="cards">{props.header || 'Cards view'}</PageHeader>
+            {pageNum}<hr />
             {loading && <span className="loading"><Loading>Loading...</Loading></span>}
-            {payload && !loading &&
-                <Card
-                    title="Spaghetti carbonara"
-                    titleDescription="Italian cuisine"
-                    description="Spaghetti with egg yolk and parmesan sauce Served hot, with freshly ground black pepper and toasted, dried brisket. Cream is added by idiots. Spaghetti with egg yolk and parmesan sauce Served hot, with freshly ground black pepper and toasted, dried brisket. Cream is added by idiots. Spaghetti with egg yolk and parmesan sauce Served hot, with freshly ground black pepper and toasted, dried brisket. Cream is added by idiots"
-                    descLength={100}
-                />
+            {crardsDisplay && !loading &&
+                <div className="dd-cards-list">
+                    {crardsDisplay.map(card =>
+                        <Card
+                            title={card[props.title]}
+                            titleDescription={card[props.titleDescription]}
+                            description={card[props.description]}
+                            descLength={props.descLength}
+                            width={props.width}
+                            labels={card.labels}
+                            photo={card[props.photo]}
+                            photoHeigh={props.photoHeigh}
+                        />
+                    )}
+                    {!lazyLoading && <Button icon="plus" onClick={loadMore}>Load more</Button>}
+                    {lazyLoading && <Loading>Loading...</Loading>}
+                </div>
             }
 
         </React.Fragment>
@@ -571,6 +654,8 @@ export function ChangeTheme(props) {
             document.documentElement.style.setProperty('--ok-color', '#00C197')
             document.documentElement.style.setProperty('--ok-color-light', '#D6F8E5')
             document.documentElement.style.setProperty('--border-radius', '25px')
+            document.documentElement.style.setProperty('--label-color', '#B9E0CB')
+            document.documentElement.style.setProperty('--label-text-color', '#333')
         }
         if (theme === 'tiffany') {
             document.documentElement.style.setProperty('--button-border-color', '#8E8E8E')
@@ -591,8 +676,10 @@ export function ChangeTheme(props) {
             document.documentElement.style.setProperty('--ok-color', '#00C197')
             document.documentElement.style.setProperty('--ok-color-light', '#D6F8E5')
             document.documentElement.style.setProperty('--border-radius', '25px')
+            document.documentElement.style.setProperty('--label-color', '#FFCCA9')
+            document.documentElement.style.setProperty('--label-text-color', '#333')
         }
-        if (theme === 'dark') {
+        if (theme === 'dark-mint') {
             document.documentElement.style.setProperty('--button-border-color', '#2f00ff')
             document.documentElement.style.setProperty('--field-border-color', 'rgba(255,255,255,.2)')
             document.documentElement.style.setProperty('--accent-color', '#00ff98')
@@ -611,6 +698,8 @@ export function ChangeTheme(props) {
             document.documentElement.style.setProperty('--ok-color', '#00C197')
             document.documentElement.style.setProperty('--ok-color-light', '#346266')
             document.documentElement.style.setProperty('--border-radius', '25px')
+            document.documentElement.style.setProperty('--label-color', '#2f00ff')
+            document.documentElement.style.setProperty('--label-text-color', 'rgba(255,255,255,.85)')
         }
         if (theme === 'warm-night') {
             document.documentElement.style.setProperty('--button-border-color', '#ce9306')
@@ -631,39 +720,47 @@ export function ChangeTheme(props) {
             document.documentElement.style.setProperty('--ok-color', '#76ab24')
             document.documentElement.style.setProperty('--ok-color-light', '#476927')
             document.documentElement.style.setProperty('--border-radius', '25px')
+            document.documentElement.style.setProperty('--label-color', '#ce9306')
+            document.documentElement.style.setProperty('--label-text-color', 'rgba(255,255,255,.85)')
         }
 
     }
 
     currentTheme && setTheme(currentTheme)
     const changeTheme = e => setTheme(e.target.value)
+
+    const options =
+        [
+            {
+                value: 'classic',
+                label: 'Directual Blue, light theme'
+            },
+            {
+                value: 'tiffany',
+                label: 'Tiffany Blue, light theme'
+            },
+            {
+                value: 'dark-mint',
+                label: 'Denim-Mint, dark theme'
+            },
+            {
+                value: 'warm-night',
+                label: 'Warm Night, dark theme'
+            }
+        ]
+
+    const userOptions = (props.themes && options.filter(option => props.themes.indexOf(option.value) != -1)) || options
     return (
         <React.Fragment>
             {!props.initial &&
-                <Radio
-                    onChange={changeTheme}
-                    defaultValue={currentTheme}
-                    options={
-                        [
-                            {
-                                value: 'classic',
-                                label: 'Directual Blue, light theme'
-                            },
-                            {
-                                value: 'tiffany',
-                                label: 'Tiffany Blue, light theme'
-                            },
-                            {
-                                value: 'dark',
-                                label: 'Denim-Mint, dark theme'
-                            },
-                            {
-                                value: 'warm-night',
-                                label: 'Warm Nignt, dark theme'
-                            }
-                        ]
-                    }
-                />}
+                <React.Fragment>
+                    <PageHeader icon="styles">{props.header || 'Choose theme'}</PageHeader>
+                    <Radio
+                        onChange={changeTheme}
+                        defaultValue={currentTheme}
+                        options={userOptions}
+                    />
+                </React.Fragment>}
         </React.Fragment>
     )
 }

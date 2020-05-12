@@ -1,0 +1,78 @@
+@media all and (max-width: 415px) {
+    div.page-content {
+        padding: 24px;
+    }
+}
+
+.page-content {
+    padding: 24px 36px;
+    flex-grow: 2;
+    background-color: var(--secondary-background-color); 
+    overflow: auto;
+    h1 {
+        margin-bottom: 24px;
+    }
+}
+
+.dd-header {
+    display: flex;
+    align-items: center;
+    &.icon:before {
+        font-size: 1.5em;
+        height: var(--h1-font-size);
+        width: var(--h1-font-size);
+        margin-right: 18px;
+        display: flex;
+        align-items: center;
+    }
+}
+
+.dd-hide-text {
+    transition: .7s;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    p {margin-bottom: 12px;}
+    .expand-text {
+        color: var(--accent-color);
+        font-size: var(--text-very-small-size);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        &:hover {
+            color: var(--secondary-accent-color);
+            transition: .5s;
+        }
+        &:before {
+            display: flex;
+            align-items: center;
+            height: var(--text-very-small-size);
+            font-size: 1.5em;
+        }
+    }
+}
+
+.dd-labels {
+    display: flex;
+    flex-wrap: wrap;
+    .dd-label {
+        padding: 3px 8px;
+        margin: 0 6px 6px 0;
+        flex-shrink: none;
+        max-width: 80%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        color: var(--label-text-color);
+        background-color: var(--label-color);
+        font-size: var(--text-small-size);
+        border-radius: var(--text-very-small-size);
+        opacity: .5;
+        transition: .5s;
+        cursor: default;
+        &:hover {
+            opacity: 1;
+            transition: .5s;
+        }
+    }
+}
