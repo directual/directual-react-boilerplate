@@ -4,13 +4,10 @@ import { Table, PageHeader } from '../directualdesign/directual-design'
 
 export function TableView() {
     return (
-      <div>
-        <PageHeader icon="database">Table view</PageHeader>
         <Table 
           structure='Books'
           endpoint='getBooks'
-
+          header="Marvellous books"
         />
-      </div>
     )
 }

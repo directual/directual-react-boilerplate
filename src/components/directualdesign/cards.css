@@ -22,6 +22,14 @@
   line-height: 1.5em;
   margin: var(--text-very-small-size) 0;
 }
+.dd-cards-load-more {
+  min-height: 80px;
+}
+.dd-cards-load-num {
+  font-size: var(--text-small-size);
+  margin-bottom: 12px;
+  opacity: 0.6;
+}
 @media all and (min-width: 415px) {
   .dd-cards-list {
     display: flex;

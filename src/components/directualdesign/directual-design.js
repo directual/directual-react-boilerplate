@@ -63,6 +63,7 @@ export function Table(props) {
 
     return (
         <React.Fragment>
+            <PageHeader icon="database">{props.header || 'Table view'}</PageHeader>
             {loading && <span className="loading"><Loading>Loading...</Loading></span>}
             {payload && !loading &&
                 <div>
@@ -152,11 +153,11 @@ export function Cards(props) {
 
     const auth = useAuth();
 
-    let step = 2
+    let step = props.cardsNumber || 20
 
     useEffect(() => {
         console.log(pageNum)
-        getData() 
+        getData()
     }, [pageNum])
 
     let Arr
@@ -197,6 +198,9 @@ export function Cards(props) {
         setPageNum(pageNum + 1)
     }
 
+    let loaded = (pageNum + 1) * step;
+    (loaded > pageInfo.tableSize) && (loaded = pageInfo.tableSize)
+
     return (
         <React.Fragment>
             <PageHeader icon="cards">{props.header || 'Cards view'}</PageHeader>
@@ -215,8 +219,11 @@ export function Cards(props) {
                             photoHeigh={props.photoHeigh}
                         />
                     )}
-                    {!lazyLoading && (pageNum + 1 < pageInfo.totalPage) && <Button icon="plus" onClick={loadMore}>Load more</Button>}
-                    {lazyLoading && <Loading>Loading...</Loading>}
+                    <div className="dd-cards-load-more">
+                        {!lazyLoading && <div className="dd-cards-load-num">Loaded {loaded} cards from {pageInfo.tableSize}</div>}
+                        {!lazyLoading && (pageNum + 1 < pageInfo.totalPage) && <Button icon="plus" onClick={loadMore}>Load more</Button>}
+                        {lazyLoading && <Loading>Loading...</Loading>}
+                    </div>
                 </div>
             }
 
@@ -453,18 +460,27 @@ export function Button(props) {
 
 export function Input(props) {
     return (
-        <div className="field-wrapper">
-            {((props.type === 'text') || (props.type === 'password')) &&
-                <React.Fragment>
+        <React.Fragment>
+            {((props.type == 'text') || (props.type === 'password')) &&
+                <div className="field-wrapper">
                     <label>{props.label}</label>
                     <input
                         className="dd-field"
                         placeholder={props.placeholder}
                         type={props.type}
                         onChange={props.onChange} />
-                </React.Fragment>
+                </div>
             }
-        </div>
+            {(props.type == 'radio') &&
+                <div className="field-wrapper">
+                    <label>{props.label}</label>
+                    <Radio
+                        options={props.options}
+                        onChange={props.onChange}
+                    />
+                </div>
+            }
+        </React.Fragment>
     )
 }
 
@@ -473,7 +489,7 @@ export function Radio(props) {
     const [selectedOption, setSelectedOption] = useState(props.defaultValue);
     return (
         <div className="dd-radio">
-            {props.options.map(option =>
+            {props.options && props.options.map(option =>
                 <label>
                     <input
                         type="radio"
@@ -554,6 +570,7 @@ export function Form(props) {
                                         label={field.label}
                                         placeholder={field.placeholder}
                                         type={field.type}
+                                        options={field.options}
                                         onChange={(e) => {
                                             setFormPayload({ ...formPayload, [field.fieldSysName]: e.target.value })
                                         }}

@@ -14,7 +14,8 @@ export function CardsView() {
       descLength={80}
       width='330px'
       photo='photo'
-      photoHeigh='250px'
+      photoHeigh='220px'
+      cardsNumber={9}
     />
   )
 }
