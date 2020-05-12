@@ -152,17 +152,7 @@ export function Cards(props) {
 
     const auth = useAuth();
 
-    let Arr1;
-    let Arr2;
-    let Arr3;
     let step = 2
-
-    Arr1 = [{a:1},{b:2}];
-    Arr2 = [{c:1},{d:2}];
-    Arr3 = Object.assign(Arr1, Arr2);
-    console.log(Arr1)
-    console.log(Arr2)
-    console.log(Arr3)
 
     useEffect(() => {
         console.log(pageNum)
@@ -172,9 +162,8 @@ export function Cards(props) {
     let Arr
 
     useEffect(() => {
-        Arr = crardsDisplay
-        Arr = Object.assign(Arr,payload)
-        setCrardsDisplay(Arr)
+        setCrardsDisplay(crardsDisplay.concat(payload))
+
     }, [payload])
 
     function getData() {
@@ -211,7 +200,6 @@ export function Cards(props) {
     return (
         <React.Fragment>
             <PageHeader icon="cards">{props.header || 'Cards view'}</PageHeader>
-            {pageNum}<hr />
             {loading && <span className="loading"><Loading>Loading...</Loading></span>}
             {crardsDisplay && !loading &&
                 <div className="dd-cards-list">
@@ -227,7 +215,7 @@ export function Cards(props) {
                             photoHeigh={props.photoHeigh}
                         />
                     )}
-                    {!lazyLoading && <Button icon="plus" onClick={loadMore}>Load more</Button>}
+                    {!lazyLoading && (pageNum + 1 < pageInfo.totalPage) && <Button icon="plus" onClick={loadMore}>Load more</Button>}
                     {lazyLoading && <Loading>Loading...</Loading>}
                 </div>
             }

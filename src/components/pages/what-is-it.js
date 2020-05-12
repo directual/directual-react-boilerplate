@@ -1,5 +1,5 @@
 import React from 'react'
-import { Article, Hint, PageHeader } from '../UI-components/directual-design'
+import { Article, Hint, PageHeader } from '../directualdesign/directual-design'
 
 export function WhatIsIt() {
     return (

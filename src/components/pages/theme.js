@@ -1,5 +1,5 @@
 import React from 'react'
-import { ChangeTheme, PageHeader } from '../UI-components/directual-design'
+import { ChangeTheme, PageHeader } from '../directualdesign/directual-design'
 
 export function ThemePage() {
     return (

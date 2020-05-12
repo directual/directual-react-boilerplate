@@ -13,7 +13,7 @@ import {
 import { ProvideAuth } from "./auth"
 import DirectualHeader from "./components/directual-header"
 
-import { MainMenu, PrivateRoute, PageContent, SetTheme } from './components/UI-components/directual-design'
+import { MainMenu, PrivateRoute, PageContent, SetTheme } from './components/directualdesign/directual-design'
 
 import { WhatIsIt } from './components/pages/what-is-it'
 import { FormView } from './components/pages/form-view'

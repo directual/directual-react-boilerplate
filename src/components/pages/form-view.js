@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, PageHeader } from '../UI-components/directual-design'
+import { Form, PageHeader } from '../directualdesign/directual-design'
 
 export function FormView() {
     return (
