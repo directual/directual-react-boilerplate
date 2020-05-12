@@ -1,0 +1,27 @@
+.login-page {
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.login-page h1 {
+  margin-bottom: 12px;
+  text-align: center;
+}
+.login-page .field {
+  margin-bottom: 12px;
+}
+.login-page .alert {
+  margin-bottom: 18px;
+}
+.login-page .error {
+  text-align: center;
+}
+.login-page .login-greetings {
+  margin-bottom: 12px;
+}
+@media all and (max-width: 415px) {
+  .login-page {
+    margin: 24px auto 0 auto;
+  }
+}

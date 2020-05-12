@@ -1,0 +1,29 @@
+@media all and (max-width: 415px) {
+    div.page-content {
+        padding: 24px;
+    }
+}
+
+.page-content {
+    padding: 24px 36px;
+    flex-grow: 2;
+    background-color: var(--secondary-background-color); 
+    overflow: auto;
+}
+
+.page-content h1 {
+    margin-bottom: 24px;
+}
+
+.dd-header {
+    display: flex;
+    align-items: center;
+}
+.dd-header.icon:before {
+    font-size: 1.5em;
+    height: var(--h1-font-size);
+    width: var(--h1-font-size);
+    margin-right: 18px;
+    display: flex;
+    align-items: center;
+}

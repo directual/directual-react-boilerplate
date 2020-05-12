@@ -1,0 +1,31 @@
+.dd-card {
+    background-color: var(--background-color);
+    border:solid 1px var(--field-border-color);
+    border-radius: var( --border-radius);
+
+    .card-content {
+        padding: 20px 24px;
+    }
+
+    &:hover {
+        border-width: 2px;
+        padding: 19px 23px;
+    }
+    &:active {
+        border-width: 2px;
+        padding: 19px 23px;
+        border-color: var(--font-color);
+    }
+    .card-title {
+        padding-bottom: 3px;
+    }
+    .card-title-description {
+        opacity: .5;
+        font-size: var(--text-small-size);
+    }
+    .card-description {
+        line-height: 1.5em;
+        margin: var(--text-very-small-size) 0;
+        //font-size: var(--text-small-size);
+    }
+}

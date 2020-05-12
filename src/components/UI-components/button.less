@@ -1,0 +1,47 @@
+
+
+.dd-button {
+    display: flex;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
+    padding: 0 18px;
+    text-decoration: none;
+    color: var(--font-color);
+    border:solid 1px var( --button-border-color);
+    border-radius: var( --border-radius);
+    background-color: var(--background-color);
+    cursor: pointer;
+    outline: none;
+    transition: .5s;
+    &.disabled {
+        cursor: not-allowed;
+        opacity: .3;
+    }
+    &.accent {
+        border-color:var( --accent-color);
+        background-color: var(--accent-color);
+        color: (var(--button-accent-color));
+        &:hover {
+            background-color: var(--secondary-accent-color);
+            color: var(--button-accent-color);
+            border-color: var(--secondary-accent-color);
+        }
+    }
+    &:hover {
+        padding: 0 17px;
+        border-width:2px;
+        transition: .5s;
+    }
+    &:active {
+        background-color: var(--font-color);
+        color: var(--background-color);
+        border-color: var(--font-color);
+    }
+    &.icon {
+        &:before {
+            font-size: 24px;
+            margin-left: -6px;
+        }
+    }
+} 

@@ -1,0 +1,106 @@
+.dd-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.dd-form .field-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin-bottom: 12px;
+}
+.dd-form label {
+  font-size: var(--text-small-size);
+  opacity: 0.8;
+  padding-bottom: 6px;
+}
+.dd-form .dd-button {
+  margin: 12px 0;
+}
+.dd-form .section {
+  border-top: solid 1px var(--font-color);
+  display: flex;
+  justify-content: center;
+  margin: 18px 0 8px 0;
+  opacity: 0.5;
+}
+.dd-form .section span {
+  background-color: var(--secondary-background-color);
+  font-size: var(--text-small-size);
+  display: flex;
+  color: var(--font-color);
+  margin-top: -10px;
+  padding: 0 6px;
+}
+.error {
+  color: var(--error-color);
+}
+.alert {
+  background-color: var(--alert-color-light);
+  border: solid 1px var(--alert-color);
+  padding: 6px;
+  border-radius: 6px;
+}
+.dd-field {
+  outline: none;
+  border: solid 1px var(--field-border-color);
+  border-radius: var(--border-radius);
+  background-color: var(--background-color);
+  display: flex;
+  height: 48px;
+  align-items: center;
+  padding: 0 18px;
+  color: var(--font-color);
+}
+.dd-field:hover {
+  border-width: 2px;
+  height: 46px;
+  padding: 0 17px;
+}
+.dd-field:focus {
+  border-width: 2px;
+  height: 46px;
+  padding: 0 17px;
+  border-color: var(--accent-color);
+}
+.dd-field:active {
+  height: 46px;
+  padding: 0 17px;
+  border: solid 2px var(--font-color);
+}
+.dd-field::placeholder {
+  opacity: 0.5;
+  color: var(--font-color);
+  font-size: var(--text-small-size);
+}
+.dd-radio {
+  display: flex;
+  flex-direction: column;
+}
+.dd-radio label {
+  display: flex;
+  align-items: center;
+  height: 32px;
+  cursor: pointer;
+}
+.dd-radio label:hover input {
+  border: solid 4px var(--field-border-color);
+}
+.dd-radio label input {
+  width: 20px;
+  height: 20px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 50%;
+  border: solid 1px var(--field-border-color);
+  margin: 6px 11px 6px 1px;
+  outline: none;
+}
+.dd-radio label input:checked {
+  border: solid 4px var(--accent-color);
+}
+.dd-radio label input:active {
+  border: solid 4px var(--font-color);
+}

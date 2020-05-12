@@ -1,0 +1,28 @@
+.dd-card {
+  background-color: var(--background-color);
+  border: solid 1px var(--field-border-color);
+  border-radius: var(--border-radius);
+}
+.dd-card .card-content {
+  padding: 20px 24px;
+}
+.dd-card:hover {
+  border-width: 2px;
+  padding: 19px 23px;
+}
+.dd-card:active {
+  border-width: 2px;
+  padding: 19px 23px;
+  border-color: var(--font-color);
+}
+.dd-card .card-title {
+  padding-bottom: 3px;
+}
+.dd-card .card-title-description {
+  opacity: 0.5;
+  font-size: var(--text-small-size);
+}
+.dd-card .card-description {
+  line-height: 1.5em;
+  margin: var(--text-very-small-size) 0;
+}
