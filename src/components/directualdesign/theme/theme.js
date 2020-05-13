@@ -19,7 +19,8 @@ export function ChangeTheme(props) {
         localStorage.setItem('dd-theme', theme)
         if (theme === 'classic') {
             document.documentElement.style.setProperty('--button-border-color', '#8E8E8E')
-            document.documentElement.style.setProperty('--field-border-color', '#8E8E8E')
+            document.documentElement.style.setProperty('--field-border-color', '#aaa')
+            document.documentElement.style.setProperty('--table-border-color', 'rgba(0,0,0,.12)')
             document.documentElement.style.setProperty('--accent-color', '#058efc')
             document.documentElement.style.setProperty('--secondary-accent-color', '#0062BD')
             document.documentElement.style.setProperty('--button-accent-color', '#fff')
@@ -41,7 +42,8 @@ export function ChangeTheme(props) {
         }
         if (theme === 'tiffany') {
             document.documentElement.style.setProperty('--button-border-color', '#8E8E8E')
-            document.documentElement.style.setProperty('--field-border-color', '#8E8E8E')
+            document.documentElement.style.setProperty('--field-border-color', '#aaa')
+            document.documentElement.style.setProperty('--table-border-color', 'rgba(0,0,0,.12)')
             document.documentElement.style.setProperty('--accent-color', '#4ad5c8')
             document.documentElement.style.setProperty('--secondary-accent-color', '#37aea3')
             document.documentElement.style.setProperty('--button-accent-color', '#fff')
@@ -64,6 +66,7 @@ export function ChangeTheme(props) {
         if (theme === 'dark-mint') {
             document.documentElement.style.setProperty('--button-border-color', '#2f00ff')
             document.documentElement.style.setProperty('--field-border-color', 'rgba(255,255,255,.2)')
+            document.documentElement.style.setProperty('--table-border-color', 'rgba(255,255,255,.2)')
             document.documentElement.style.setProperty('--accent-color', '#00ff98')
             document.documentElement.style.setProperty('--secondary-accent-color', '#02c073')
             document.documentElement.style.setProperty('--button-accent-color', ' #131022')
@@ -86,6 +89,7 @@ export function ChangeTheme(props) {
         if (theme === 'warm-night') {
             document.documentElement.style.setProperty('--button-border-color', '#ce9306')
             document.documentElement.style.setProperty('--field-border-color', 'rgba(255,255,255,.2)')
+            document.documentElement.style.setProperty('--table-border-color', 'rgba(255,255,255,.2)')
             document.documentElement.style.setProperty('--accent-color', '#85c92e')
             document.documentElement.style.setProperty('--secondary-accent-color', '#8fff00')
             document.documentElement.style.setProperty('--button-accent-color', ' #142025')

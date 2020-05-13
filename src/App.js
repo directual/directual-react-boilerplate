@@ -24,6 +24,7 @@ import { TableView } from './pages/table-view'
 import { CardsView } from './pages/cards-veiw'
 import { LoginPage } from './pages/login'
 import { ThemePage } from './pages/theme'
+import { MyAccount } from './pages/my-account'
 
 // Styles
 import './assets/styles/App.css';
@@ -93,7 +94,7 @@ function App() {
                   },
                   {
                     type: "link",
-                    title: 'My profile',
+                    title: 'My account',
                     path: '/account',
                     icon: 'user',
                     isAutorised: true
@@ -141,7 +142,7 @@ function App() {
                 </Route>
 
                 <PrivateRoute path="/account">
-                  <h1>My profile</h1>
+                  <MyAccount />
                 </PrivateRoute>
 
                 <PrivateRoute exact path="/admin" hasRole={'admin'}>

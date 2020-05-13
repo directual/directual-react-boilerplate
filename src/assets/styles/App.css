@@ -36,3 +36,9 @@ body {
 .content {
   background-color: var(--secondary-background-color);
 }
+a {
+  color: var(--accent-color);
+}
+a:hover {
+  color: var(--secondary-accent-color);
+}

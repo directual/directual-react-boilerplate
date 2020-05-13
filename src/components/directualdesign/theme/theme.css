@@ -4,7 +4,8 @@
     
     /* DEFAULT GRAY-BLUE SCHEME */
     --button-border-color: #8E8E8E;
-    --field-border-color: #8E8E8E;
+    --field-border-color: #aaa;
+    --table-border-color: rgba(0,0,0,.12);
     --accent-color: #058efc;
     --secondary-accent-color: #0062BD;
     --button-accent-color: #fff;

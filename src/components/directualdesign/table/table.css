@@ -1,0 +1,19 @@
+.dd-table {
+  background-color: var(--background-color);
+  padding: 6px;
+  border-radius: var(--border-radius);
+  overflow: auto;
+}
+.dd-table table {
+  min-width: 100%;
+  border-collapse: collapse;
+}
+.dd-table table td {
+  padding: 12px 12px;
+  border-top: solid 1px var(--table-border-color);
+}
+.dd-table table thead td {
+  font-weight: var(--strong-font-weight);
+  border: none;
+  opacity: 0.5;
+}
