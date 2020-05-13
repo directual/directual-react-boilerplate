@@ -10,7 +10,7 @@
     top: 18px;
   }
   div.show-mm-button:before {
-    font-family: 'icomoon';
+    font-family: 'directual-icons';
     content: "\e940";
     font-size: 50px;
     opacity: 0.5;
@@ -51,7 +51,7 @@
     top: 18px;
   }
   div.main-menu .hide-mobile-menu:before {
-    font-family: 'icomoon';
+    font-family: 'directual-icons';
     content: "\e918";
     font-size: 50px;
     opacity: 0.5;

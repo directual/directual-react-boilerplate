@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { Cards, PageHeader } from '../directualdesign/directual-design'
+import React from 'react'
+import { Cards } from '../components/directualdesign/cards/cards'
 
 
 export function CardsView() {

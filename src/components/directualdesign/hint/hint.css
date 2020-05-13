@@ -33,7 +33,7 @@
   font-weight: var(--strong-font-weight);
 }
 .hint .title:before {
-  font-family: 'icomoon';
+  font-family: 'directual-icons';
   content: "\e96d";
   font-size: 24px;
   color: var(--alert-color);

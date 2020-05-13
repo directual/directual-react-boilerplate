@@ -13,14 +13,17 @@ import {
 import { ProvideAuth } from "./auth"
 import DirectualHeader from "./components/directual-header"
 
-import { MainMenu, PrivateRoute, PageContent, SetTheme } from './components/directualdesign/directual-design'
+import { MainMenu } from './components/directualdesign/mainmenu/mainmenu'
+import { SetTheme } from './components/directualdesign/theme/theme'
+import { PageContent } from './components/directualdesign/primitive/primitiveComponents'
+import { PrivateRoute } from './components/directualdesign/rbac/rbac'
 
-import { WhatIsIt } from './components/pages/what-is-it'
-import { FormView } from './components/pages/form-view'
-import { TableView } from './components/pages/table-view'
-import { CardsView } from './components/pages/cards-veiw'
-import { LoginPage } from './components/pages/login'
-import { ThemePage } from './components/pages/theme'
+import { WhatIsIt } from './pages/what-is-it'
+import { FormView } from './pages/form-view'
+import { TableView } from './pages/table-view'
+import { CardsView } from './pages/cards-veiw'
+import { LoginPage } from './pages/login'
+import { ThemePage } from './pages/theme'
 
 // Styles
 import './assets/styles/App.css';

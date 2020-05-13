@@ -1,5 +1,6 @@
 import React from 'react'
-import { LoginRegister, Hint } from '../directualdesign/directual-design'
+import { Hint } from '../components/directualdesign/hint/hint'
+import { LoginRegister } from '../components/directualdesign/rbac/rbac'
 
 export function LoginPage() {
     return (

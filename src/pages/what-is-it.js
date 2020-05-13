@@ -1,5 +1,7 @@
 import React from 'react'
-import { Article, Hint, PageHeader } from '../directualdesign/directual-design'
+import { Hint } from '../components/directualdesign/hint/hint'
+import { Article } from '../components/directualdesign/article/article'
+import { PageHeader } from '../components/directualdesign/primitive/primitiveComponents'
 
 export function WhatIsIt() {
     return (

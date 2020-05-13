@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Table, PageHeader } from '../directualdesign/directual-design'
+import { Table } from '../components/directualdesign/table/table'
 
 
 export function TableView() {
