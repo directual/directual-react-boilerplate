@@ -349,16 +349,13 @@ export default App
 
 ### 5. Connect directual-api
 
-Open ApiEndpoints section on [Directual](https://my.directual.com), 
+Open [ApiEndpoints](https://directual.gitbook.io/directual-documentation/api-integrations/api-endpoints-security-layer) section on Directual, 
 choose any endpoint
 and press 
 
 `Endpoint respond preview`
-![Image description](screenshots/apienpoint_view.png)
 
 after copy code in section `How it use? step 3` to useEffect function.
-
-![Image description](screenshots/how_use_it.png)
 
 
 Example result page: `src/pages/DashboardPage.js`
