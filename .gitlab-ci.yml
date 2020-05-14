@@ -9,7 +9,7 @@ stages:
 
 before_script:
   - export DOCKER_TAG=${CI_COMMIT_REF_NAME}
-  - export IMAGE_NAME="directual-stat"
+  - export IMAGE_NAME="react"
   - export COMMIT_SHORT=`echo ${CI_COMMIT_SHA} | cut -c1-8`
 
 build:
