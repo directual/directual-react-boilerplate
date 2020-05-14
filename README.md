@@ -2,7 +2,13 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # React boilerplate for integrating with Directual as a backend
 
-## Step 1: create a react bootstrap project and bind required dependencies
+This is an example React project integrated with [Directual](https://www.directual.com/). 
+- Here is a [demo](http://react.directual.app/)
+- You can also download the [snapshot](https://api.alfa.directual.com/fileUploaded/React-boilerplate/c52983be-d61f-48d9-b5ec-5e5aba1eeb4a.json
+) of Directual app.
+
+## Step-by-step instruction
+### 1. Create a react bootstrap project and bind required dependencies
 
 `npm install -g create-react-app`
 
@@ -23,13 +29,11 @@ and install necessary libs: react-router-dom, directual-api:
 `npm install http-proxy-middleware --save `
 
 
-## Step 2: create middleware proxy to directual.api, for resolve problem linked with CORS
-
+### 2. Create middleware proxy to directual.api, for resolving problem linked with CORS
 
 create file `.env` in root directory with you APP_ID,
 example:
 `.env`
-
 `APP_ID=050e77bb-b0e6-4685-8712-a85774fad272`
 
 You can find APP_ID in Api -> API keys section on [Directual](https://my.directual.com), 
@@ -65,20 +69,15 @@ module.exports = function(app) {
 };
 ```
 
-
-## Step 3: Run you app: 
+### 3. Run you app
 
 The command: `npm run start` runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+The page will reload automatically if you make edits.<br />
+You will also see lint errors in the console.
 
-
-
-....
-
-## Step 4: create a simple structure
+### 4. Create a simple site structure
 create `pages` folder and insert 3 files
 
 `src/pages/DashboardPage.js`
@@ -348,7 +347,7 @@ export default App
 
 ```
 
-# Try use directual api
+### 5. Connect directual-api
 
 Open ApiEndpoints section on [Directual](https://my.directual.com), 
 choose any endpoint
@@ -360,8 +359,6 @@ and press
 after copy code in section `How it use? step 3` to useEffect function.
 
 ![Image description](screenshots/how_use_it.png)
-
-
 
 
 Example result page: `src/pages/DashboardPage.js`
@@ -407,9 +404,9 @@ export default function DashBoardPage () {
 }
 ```
 
-# Step 4: Build and pack you product in docker container
+### 6. Build and pack you product in docker container
 
-## Create Docker file in root directory
+#### Create Docker file in root directory
 Create `Dockerfile` with following body:
 
 ```
@@ -472,10 +469,10 @@ const server = app.listen(SERVER_PORT, () => {
 module.exports = app;
 ```
 
-## Build docker image
+#### Build docker image
 run command: `docker build -t final_image_name .`
 
-## Run you image
+#### Run you image
 
 `docker run -d -p 8080:8080 -e APP_ID='__YOU_APP_ID__' final_image_name`
 
