@@ -46,7 +46,7 @@ export default function LoginPage() {
                 setPassword(e.target.value)
             }} />
             {error && <div className="error">{error}</div>}
-            {!loading ? <button onClick={login}>Log in</button> : <Loader />}
+            {!loading ? <button onClick={login}>Log in</button> : <Loader  text='Logging in...'/>}
         </div>
     )
 }
