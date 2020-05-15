@@ -36,7 +36,16 @@ https://api.alfa.directual.com/fileUploaded/directual-site/3f218ee3-4616-43b5-bb
 Open `.env` in root directory. Copy you APP_ID there (example: `APP_ID=050e77bb-b0e6-4685-8712-a85774fad27`)
 
 ### Step 2. Testing authentication
--
+Go to Database section in Directual. Choose structure `App users`:
+
+![WebUsers](https://api.alfa.directual.com/fileUploaded/directual-site/0cdf62fa-496e-4c49-8727-6cf680cbb5b5.jpg)
+
+This data structure contains all the users, with their logins (`id` property) and encrypted passwords:
+
+![User](
+https://api.alfa.directual.com/fileUploaded/directual-site/c5e3db89-36cb-47fe-9750-38b0ccf2b7d7.jpg)
+
+Add a user to test authentiction in your app! Remember—password have to be converted to MD5 (there is a button near this field)
 
 ### Step 3. Happy hacking!
 
