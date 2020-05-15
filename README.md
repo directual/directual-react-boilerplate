@@ -2,17 +2,27 @@
 
 # React boilerplate-code for integrating with Directual as a backend
 
-#### There are two options to use this boilerplate:
+[Directual](https://directual.com) is a low-code platform for building backend visually. 
+
+Directual matches React perfectly providing you with:
+- Database;
+- Authentication and RBAC;
+- API-builder;
+- Integrations.
+
+**There are two options to use this boilerplate:**
+
 - Clone this repo and start the project having a template;
 - Connect your existing React-app, following the instructions below.
 
 
 ## Option 1. Clone this repo
 
+
 ### Step 1. Cloning directual-react-boilerplate repo
-first, clone a
 
 `cd directual-react-boilerplate`
+
 `npm install`
 
 ### Step 1. Copying your Directual APP ID into .env file
