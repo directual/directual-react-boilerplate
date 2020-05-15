@@ -2,7 +2,7 @@
 
 # React boilerplate-code for integrating with Directual as a backend
 
-[Directual](https://directual.com) is a low-code platform for building backend visually. 
+[Directual](https://directual.com) is a low-code platform for building backend *visually*. 
 
 Directual matches React perfectly providing you with:
 - Database;
@@ -21,9 +21,12 @@ Directual matches React perfectly providing you with:
 
 ### Step 1. Cloning directual-react-boilerplate repo
 
-`cd directual-react-boilerplate`
-
-`npm install`
+1. Open Terminal.
+2. Change the current working directory to the location where you want the new project to be made. If you need to create new directory type `mkdir NAME-OF-DIRECTORY` and then `cd NAME-OF-DIRECTORY`
+3. Type `git clone https://github.com/directual/directual-react-boilerplate.git`
+4. Type `cd directual-react-boilerplate`
+5. Type `npm install`
+6. Type `npm start`
 
 ### Step 1. Copying your Directual APP ID into .env file
 -
