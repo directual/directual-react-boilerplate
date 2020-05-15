@@ -12,11 +12,11 @@ Directual matches React perfectly providing you with:
 
 **There are two options to use this boilerplate:**
 
-- Bootstrap your app from scratch cloning this repo;
-- Connect your existing React-app, following the instructions below.
+- [Bootstrap your app from scratch cloning this repo](#option1);
+- [Connect your existing React-app, following the instructions below](#option2).
 
 
-## Option 1. Bootstrap your app from scratch
+## Option 1. Bootstrap your app from scratch(#option1)
 
 
 ### Step 1. Cloning directual-react-boilerplate repo
@@ -50,7 +50,7 @@ Directual matches React perfectly providing you with:
 
 
 
-## Option 2. Adding Directual integration to your existing React app
+## Option 2. Adding Directual integration to your existing React app(#option2)
 
 ### Create a react bootstrap project and bind required dependencies
 
