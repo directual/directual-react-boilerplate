@@ -1,14 +1,33 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 # React boilerplate for integrating with Directual as a backend
 
-This is an example React project integrated with [Directual](https://www.directual.com/). 
-- Here is a [demo](http://react.directual.app/)
-- You can also download the [snapshot](https://api.alfa.directual.com/fileUploaded/React-boilerplate/c52983be-d61f-48d9-b5ec-5e5aba1eeb4a.json
-) of Directual app.
+**There are two options to use this boilerplate:**
+- Clone this repo and start the project having a template;
+- Connect your existing React-app, following the instructions below.
 
-## Step-by-step instruction for creating your app from scratch
-### 1. Create a react bootstrap project and bind required dependencies
+## Option 1. Clone this repo
+
+### Cloning `directual-react-boilerplate` repo
+-
+
+### Copying your Directual APP ID into `.env` file
+-
+
+### Testing authentication
+-
+
+### Creating API-endpoints for Directual database 
+-
+
+### Happy hacking!
+-
+
+### Building and packing you product in Docker container
+-
+
+
+## Option 2. Adding Directual integration to your existing React app
+
+### Create a react bootstrap project and bind required dependencies
 
 `npm install -g create-react-app`
 
@@ -28,7 +47,7 @@ and install necessary libs: react-router-dom, directual-api:
 
 `npm install http-proxy-middleware --save `
 
-### 2. Run you app
+### Run you app
 
 The command: `npm run start` runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -37,7 +56,7 @@ The page will reload automatically if you make edits.<br />
 You will also see lint errors in the console.
 
 
-### 3. Create middleware proxy to directual.api, for resolving problem linked with CORS
+### Create middleware proxy to directual.api, for resolving problem linked with CORS
 
 create file `.env` in root directory with you APP_ID,
 example:
@@ -77,7 +96,7 @@ module.exports = function(app) {
 };
 ```
 
-### 4. Create a simple site structure
+### Create a simple site structure
 create `pages` folder and insert 3 files
 
 `src/pages/PublicPage.js`
@@ -168,12 +187,12 @@ export default function LoginPage() {
 ```
 
 
-create `src/LogInLogOutButton.js` file and 
-`src/LogInLogOutButton.js`
+create `src/components/LogInLogOutButton.js` file and 
+`src/components/LogInLogOutButton.js`
 ```javascript
 
 import React from 'react'
-import { useAuth } from './auth'
+import { useAuth } from '../auth'
 import {
     Link, useHistory
 } from 'react-router-dom'
@@ -291,13 +310,12 @@ import {
   useHistory,
   useLocation
 } from 'react-router-dom'
-import './App.css'
 import LoginPage from './pages/LoginPage'
 import PrivatePage from './pages/PrivatePage'
 import PublicPage from './pages/PublicPage'
 import AdminPage from './pages/AdminPage'
-import { ProvideAuth, useAuth } from "./auth";
-import { LogInLogOutButton } from {./LogInLogOutButton}
+import { ProvideAuth, useAuth, authContext } from "./auth";
+import { LogInLogOutButton } from './components/LogInLogOutButton'
 
 
 export function PrivateRoute({ children, hasRole, ...rest }) {
@@ -377,7 +395,7 @@ export default App
 
 ```
 
-### 5. Connect directual-api
+### Connect directual-api
 
 Open [ApiEndpoints](https://directual.gitbook.io/directual-documentation/api-integrations/api-endpoints-security-layer) section on Directual, 
 choose any endpoint
@@ -431,7 +449,7 @@ export default function DashBoardPage () {
 }
 ```
 
-### 6. Build and pack you product in docker container
+### Build and pack you product in docker container
 
 #### Create Docker file in root directory
 Create `Dockerfile` with following body:
