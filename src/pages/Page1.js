@@ -22,7 +22,7 @@ export default function Page1() {
   // Paging:
   useEffect(() => {
     setPageLoading(true)
-    reload()
+    getData()
   }, [pageNum])
 
   const nextPage = () => {
@@ -35,7 +35,7 @@ export default function Page1() {
   }
 
   // GET-request:
-  function reload() {
+  function getData() {
     api
       // Data structure
       .structure(dataStructure)
@@ -81,8 +81,8 @@ export default function Page1() {
           {pageLoading && <Loader text='Loading...' />}
           {!pageLoading &&
             <div>
-              <button disabled={(pageNum == 0) && "disabled"} onClick={prevPage}>prev</button>
-              <button disabled={pageInfo || badRequest && ((pageNum == pageInfo.totalPage - 1) && "disabled")} onClick={nextPage}>next</button>
+              <button disabled={(pageNum <= 0) && "disabled"} onClick={prevPage}>prev</button>
+              <button disabled={pageInfo && !badRequest && ((pageNum == pageInfo.totalPage - 1) && "disabled")} onClick={nextPage}>next</button>
             </div>
           }
         </div>}
