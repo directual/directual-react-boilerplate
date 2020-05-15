@@ -1,31 +1,35 @@
-# React boilerplate for integrating with Directual as a backend
+![Directual + React](https://api.alfa.directual.com/fileUploaded/directual-site/6568640f-ea12-4f65-90a5-173aaabdb019.jpg)
 
-**There are two options to use this boilerplate:**
+# React boilerplate-code for integrating with Directual as a backend
+
+#### There are two options to use this boilerplate:
 - Clone this repo and start the project having a template;
 - Connect your existing React-app, following the instructions below.
 
+
 ## Option 1. Clone this repo
 
-### Cloning directual-react-boilerplate repo
+### Step 1. Cloning directual-react-boilerplate repo
 first, clone a
 
 `cd directual-react-boilerplate`
 `npm install`
 
-### Copying your Directual APP ID into `.env` file
+### Step 1. Copying your Directual APP ID into .env file
 -
 
-### Testing authentication
+### Step 2. Testing authentication
 -
 
-### Creating API-endpoints for Directual database 
+### Step 3. Creating API-endpoints for Directual database 
 -
 
-### Happy hacking!
+### Step 4. Happy hacking!
 -
 
-### Building and packing you product in Docker container
+### Final Step. Building and packing you product in Docker container
 -
+
 
 
 ## Option 2. Adding Directual integration to your existing React app
