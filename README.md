@@ -269,25 +269,25 @@ import DashboardPage from './pages/DashboardPage'
 import { ProvideAuth, useAuth } from "./auth";
 
 
-function PrivateRoute ({ children, ...rest }) {
-  const auth = useAuth();
-  return (
-    <Route
-      {...rest}
-      render={({ location }) =>
-        auth.user ? (
-          children
-        ) : (
-          <Redirect
-            to={{
-              pathname: '/login',
-              state: { from: location }
-            }}
-          />
-        )
-      }
-    />
-  )
+export function PrivateRoute({ children, hasRole, ...rest }) {
+    const auth = useAuth();
+    return (
+        <Route
+            {...rest}
+            render={({ location }) =>
+                auth.isAutorised() && auth.hasRole(hasRole) ? (
+                    children
+                ) : auth.isAutorised() && !auth.hasRole(hasRole) ? <AccessDenied /> : (
+                    <Redirect
+                        to={{
+                            pathname: '/login',
+                            state: { from: location }
+                        }}
+                    />
+                )
+            }
+        />
+    )
 }
 //example how use standart components
 
