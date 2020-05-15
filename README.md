@@ -46,9 +46,10 @@ This data structure contains all the users, with their logins (`id` property) an
 https://api.alfa.directual.com/fileUploaded/directual-site/c5e3db89-36cb-47fe-9750-38b0ccf2b7d7.jpg)
 Add a user to test authentiction in your app! Remember—password have to be converted to MD5 (there is a button near this field)
 
-After logging in you'll see Private page (for all users) and Admin page, if you added 'admin' to property `role` for your user in Directual.
+After logging in you'll see Private page (for all users) and Admin page, if you add *'admin'* value to property `role` for your user in Directual.
 
 ![Directual-React boilerplate](https://api.alfa.directual.com/fileUploaded/directual-site/081995d7-7003-4cc2-8a97-a51b43083d23.jpg)
+![RBAC](https://api.alfa.directual.com/fileUploaded/directual-site/a37e7629-6ee1-4543-943d-b5fcf6b30825.jpg)
 ## Step 3. Happy hacking!
 
 ### Setting up site structure
