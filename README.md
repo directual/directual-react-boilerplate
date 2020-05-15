@@ -16,10 +16,10 @@ Directual matches React perfectly providing you with:
 - [Connect your existing React-app, following the instructions below](#option-2-adding-directual-integration-to-your-existing-react-app)
 
 
-## Option 1. Bootstrap your app from scratch
+# Option 1. Bootstrap your app from scratch
 
 
-### Step 1. Cloning directual-react-boilerplate repo
+## Step 1. Cloning directual-react-boilerplate repo
 
 1. Open Terminal.
 2. Change the current working directory to the location where you want the new project to be made. If you need to create new directory type `mkdir NAME-OF-DIRECTORY` and then `cd NAME-OF-DIRECTORY`
@@ -28,44 +28,122 @@ Directual matches React perfectly providing you with:
 5. Type `npm install`
 6. Type `npm start`
 
-### Step 1. Copying your Directual APP ID into .env file
+## Step 1. Copying your Directual APP ID into .env file
 Go to your [Directual account](https://my.directual.com/), into your app. Then to 'integration' section, API keys. Create new one and copy it:
 ![Api key](
 https://api.alfa.directual.com/fileUploaded/directual-site/3f218ee3-4616-43b5-bb3e-cad4c65b5eb6.jpg)
-
 Open `.env` in root directory. Copy you APP_ID there (example: `APP_ID=050e77bb-b0e6-4685-8712-a85774fad27`)
 
-### Step 2. Testing authentication
+## Step 2. Testing authentication
 Go to Database section in Directual. Choose structure `App users`:
 
 ![WebUsers](https://api.alfa.directual.com/fileUploaded/directual-site/0cdf62fa-496e-4c49-8727-6cf680cbb5b5.jpg)
-
 This data structure contains all the users, with their logins (`id` property) and encrypted passwords:
 
 ![User](
 https://api.alfa.directual.com/fileUploaded/directual-site/c5e3db89-36cb-47fe-9750-38b0ccf2b7d7.jpg)
-
 Add a user to test authentiction in your app! Remember—password have to be converted to MD5 (there is a button near this field)
 
-### Step 3. Happy hacking!
+## Step 3. Happy hacking!
 
-**Changing site structure**
-1
+### Setting up site structure
 
-**Getting data**
+Have a look at `src/App.js` and `src/components/menu/menu.js` files.
+
+Here we can configure routing:
+
+`src/App.js`
+```javascript
+...
+// This is for pages like your.app/books/the-bible, wthere 'the-bible' in nan Object ID
+// 
+// const Child = ({ match }) => {
+//   return (
+//   <div>Object ID: {match.params.id}</div>
+//   )
+// } 
+
+function App() {
+  return (
+    <ProvideAuth>
+      <Router>
+        <MainMenu />
+        <Switch>
+
+         {/* Public pages */}
+          <Route path="/login">
+            <LoginPage />
+          </Route>
+          <Route exact path="/">
+            <Page1 />
+          </Route>
+          <Route exact path="/page2">
+            <Page2 />
+          </Route>
+          
+          {/* Pages for any authorised user */}
+          <PrivateRoute path="/private">
+            <PrivatePage />
+          </PrivateRoute>
+          
+          {/* Pages for users, who have role == 'admin'. You can apply any other value here */}
+          <PrivateRoute path="/admin" hasRole={'admin'}>
+            <AdminPage />
+          </PrivateRoute>
+
+          {/* This is for pages like your.app/books/the-bible, wthere 'the-bible' in nan Object ID */}
+          {/* <Route exact path="/table/:id" component={Child}/> */}
+        </Switch>
+      </Router>
+    </ProvideAuth>
+  );
+}
+...
+```
+
+Here we can se an example of hidden JSX:
+
+`src/components/menu/menu.js`
+```javascript
+  ...
+  <ul>
+    <li>
+      <NavLink to="/">Public Page 1</NavLink>
+    </li>
+    <li>
+      <NavLink to="/page2">Public Page 2</NavLink>
+    </li>
+
+    {/* JSX visible for authorised users only */}
+    {authContext.isAutorised() && <li>
+      <NavLink to="/private">Private Page</NavLink>
+    </li>}
+
+      {/* JSX visible for users, who have role == 'admin'. You can apply any other value here */}
+    {authContext.hasRole('admin') && <li>
+      <NavLink to="/admin">Admin Page</NavLink>
+    </li>}
+    <li>
+      <LogInLogOutButton />
+    </li>
+  </ul>
+  ...
+```
+
+### Getting data
 2
 
-**Posting data**
+### Posting data
 3
 
-### Final Step. Building and packing you product in Docker container
+## Final Step. Building and packing you product in Docker container
 -
 
 
 
-## Option 2. Adding Directual integration to your existing React app
+# Option 2. Adding Directual integration to your existing React app
 
-### Create a react bootstrap project and bind required dependencies
+## Create a react bootstrap project and bind required dependencies
 
 `npm install -g create-react-app`
 
@@ -85,7 +163,7 @@ and install necessary libs: react-router-dom, directual-api:
 
 `npm install http-proxy-middleware --save `
 
-### Run you app
+## Run you app
 
 The command: `npm run start` runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -94,7 +172,7 @@ The page will reload automatically if you make edits.<br />
 You will also see lint errors in the console.
 
 
-### Create middleware proxy to directual.api, for resolving problem linked with CORS
+## Create middleware proxy to directual.api, for resolving problem linked with CORS
 
 create file `.env` in root directory with you APP_ID,
 example:
@@ -134,7 +212,7 @@ module.exports = function(app) {
 };
 ```
 
-### Create a simple site structure
+## Create a simple site structure
 create `pages` folder and insert 3 files
 
 `src/pages/PublicPage.js`
@@ -433,7 +511,7 @@ export default App
 
 ```
 
-### Connect directual-api
+## Connect directual-api
 
 Open [ApiEndpoints](https://directual.gitbook.io/directual-documentation/api-integrations/api-endpoints-security-layer) section on Directual, 
 choose any endpoint
@@ -487,7 +565,7 @@ export default function DashBoardPage () {
 }
 ```
 
-### Build and pack you product in docker container
+## Build and pack you product in docker container
 
 #### Create Docker file in root directory
 Create `Dockerfile` with following body:

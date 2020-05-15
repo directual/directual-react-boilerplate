@@ -39,12 +39,22 @@ function PrivateRoute({ children, hasRole, ...rest }) {
   )
 }
 
+// This is for pages like your.app/books/the-bible, wthere 'the-bible' in nan Object ID
+// 
+// const Child = ({ match }) => {
+//   return (
+//   <div>Object ID: {match.params.id}</div>
+//   )
+// } 
+
 function App() {
   return (
     <ProvideAuth>
       <Router>
         <MainMenu />
         <Switch>
+
+         {/* Public pages */}
           <Route path="/login">
             <LoginPage />
           </Route>
@@ -54,12 +64,19 @@ function App() {
           <Route exact path="/page2">
             <Page2 />
           </Route>
+          
+          {/* Pages for any authorised user */}
           <PrivateRoute path="/private">
             <PrivatePage />
           </PrivateRoute>
+          
+          {/* Pages for users, who have role == 'admin'. You can apply any other value here */}
           <PrivateRoute path="/admin" hasRole={'admin'}>
             <AdminPage />
           </PrivateRoute>
+
+          {/* This is for pages like your.app/books/the-bible, wthere 'the-bible' in nan Object ID */}
+          {/* <Route exact path="/table/:id" component={Child}/> */}
         </Switch>
       </Router>
     </ProvideAuth>
