@@ -8,6 +8,9 @@ body {
 .content {
     padding:20px
 }
+.content p {
+    margin:10px 0
+}
 
 .login-form input {
     font-size: 16px;

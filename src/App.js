@@ -15,6 +15,7 @@ import { ProvideAuth, useAuth, authContext } from './auth'
 
 import Page1 from './pages/Page1'
 import Page2 from './pages/Page2'
+import Page3 from './pages/Page3'
 import PrivatePage from './pages/PrivatePage'
 import AdminPage from './pages/AdminPage'
 import LoginPage from './pages/login'
@@ -48,15 +49,11 @@ function PrivateRoute({ children, hasRole, ...rest }) {
 //   )
 // } 
 
-function App() {
+export default function App() {
   return (
     <ProvideAuth>
       <Router>
         <MainMenu />
-
-        {/* {authContext.isAutorised() && 
-        <div>ХУЙ</div>} */}
-
         <Switch>
 
          {/* Public pages */}
@@ -68,6 +65,9 @@ function App() {
           </Route>
           <Route exact path="/page2">
             <Page2 />
+          </Route>
+          <Route exact path="/page3">
+            <Page3 />
           </Route>
           
           {/* Pages for any authorised user */}
@@ -87,5 +87,3 @@ function App() {
     </ProvideAuth>
   );
 }
-
-export default App;

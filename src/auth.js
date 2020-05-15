@@ -32,6 +32,7 @@ function useProvideAuth() {
   const signout = (cb) => {
     return api.auth.logout('').then(res=>{
       setUser(null)
+      setRole(null)
       setSessionID(null)
       window.localStorage.setItem('sid', null)
       cb()

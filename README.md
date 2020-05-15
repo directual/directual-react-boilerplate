@@ -67,8 +67,8 @@ function App() {
     <ProvideAuth>
       <Router>
         <MainMenu />
-        <Switch>
 
+        <Switch>
          {/* Public pages */}
           <Route path="/login">
             <LoginPage />
@@ -103,33 +103,60 @@ function App() {
 
 Here we can se an example of hidden JSX:
 
-`src/components/menu/menu.js`
+`src/pages/Page3.js`
 ```javascript
+import React from 'react'
+import { authContext, useAuth } from '../auth'
+
+export default function Page3() {
+    const authContext = useAuth();
+    return (
+        <div className="content">
+            <h1>Page with hidden content</h1>
+
+            <p>This is <b>public</b> content. Try to login and see some hidden text!</p>
+
+            {authContext.isAutorised() &&
+                <p>This content is visible for <b>authorised users only</b></p>}
+
+            {authContext.hasRole('admin') &&
+                <p>This content is visible for a user with a <b>acertain role</b></p>}
+
+        </div>
+    )
+}
+
   ...
+```
 
-  <ul>
-    <li>
-      <NavLink to="/">Public Page 1</NavLink>
-    </li>
-    <li>
-      <NavLink to="/page2">Public Page 2</NavLink>
-    </li>
+The same feature for class Component:
 
-    {/* JSX visible for authorised users only */}
-    {authContext.isAutorised() && <li>
-      <NavLink to="/private">Private Page</NavLink>
-    </li>}
+`src/pages/Page3.js`
+```javascript
+import React from 'react'
+import { authContext, useAuth } from '../auth'
 
-      {/* JSX visible for users, who have role == 'admin'. You can apply any other value here */}
-    {authContext.hasRole('admin') && <li>
-      <NavLink to="/admin">Admin Page</NavLink>
-    </li>}
-    <li>
-      <LogInLogOutButton />
-    </li>
-  </ul>
-  
-  ...
+export default class Page3 extends React.Component {
+    render() {
+        const authContext = this.context;
+        return (
+            <div className="content">
+                <h1>Page with hidden content</h1>
+
+                <p>This is <b>public</b> content. Try to login and see some hidden text!</p>
+
+                {authContext.isAutorised() &&
+                    <p>This content is visible for <b>authorised users only</b></p>}
+
+                {authContext.hasRole('admin') &&
+                    <p>This content is visible for a user with a <b>acertain role</b></p>}
+
+            </div>
+        )
+    }
+}
+Page3.contextType = authContext
+
 ```
 
 ### Getting data
