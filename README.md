@@ -308,7 +308,7 @@ export function PrivateRoute({ children, hasRole, ...rest }) {
             render={({ location }) =>
                 auth.isAutorised() && auth.hasRole(hasRole) ? (
                     children
-                ) : auth.isAutorised() && !auth.hasRole(hasRole) ? <AccessDenied /> : (
+                ) : auth.isAutorised() && !auth.hasRole(hasRole) ? <div>Access denied!</div> : (
                     <Redirect
                         to={{
                             pathname: '/login',
