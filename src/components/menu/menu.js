@@ -11,10 +11,10 @@ export function MainMenu() {
   return (
     <ul className="main-menu">
       <li>
-        <NavLink exact to="/">Public Page 1</NavLink>
+        <NavLink exact to="/">Get data</NavLink>
       </li>
       <li>
-        <NavLink exact to="/page2">Public Page 2</NavLink>
+        <NavLink exact to="/page2">Post data</NavLink>
       </li>
 
       {/* JSX visible for authorised users only */}

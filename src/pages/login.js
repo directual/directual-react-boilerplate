@@ -37,7 +37,7 @@ export default function LoginPage() {
     return (
         <div className="content login-form">
             { /* Here is from path: */}
-            <p>You must log in to view the the page <b>{from.pathname}</b></p>
+            <p>You must log in to view the page <b>{from.pathname}</b></p>
             
             <input type="text" placeholder="login" onChange={(e) => {
                 setUsername(e.target.value)
