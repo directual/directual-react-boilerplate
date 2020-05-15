@@ -28,8 +28,16 @@ and install necessary libs: react-router-dom, directual-api:
 
 `npm install http-proxy-middleware --save `
 
+### 2. Run you app
 
-### 2. Create middleware proxy to directual.api, for resolving problem linked with CORS
+The command: `npm run start` runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload automatically if you make edits.<br />
+You will also see lint errors in the console.
+
+
+### 3. Create middleware proxy to directual.api, for resolving problem linked with CORS
 
 create file `.env` in root directory with you APP_ID,
 example:
@@ -68,14 +76,6 @@ module.exports = function(app) {
   );
 };
 ```
-
-### 3. Run you app
-
-The command: `npm run start` runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload automatically if you make edits.<br />
-You will also see lint errors in the console.
 
 ### 4. Create a simple site structure
 create `pages` folder and insert 3 files
