@@ -26,7 +26,8 @@ Directual matches React perfectly providing you with:
 3. Type `git clone https://github.com/directual/directual-react-boilerplate.git`
 4. Type `cd directual-react-boilerplate`
 5. Type `npm install`
-6. Type `npm start`
+6. Type `npm start` Here is what you'll get:
+![Directual-React boilerplate](https://api.alfa.directual.com/fileUploaded/directual-site/4d6af50b-ca1b-4ab1-8f03-d2ae6b832201.jpg)
 
 ## Step 1. Copying your Directual APP ID into .env file
 Go to your [Directual account](https://my.directual.com/), into your app. Then to 'integration' section, API keys. Create new one and copy it:
