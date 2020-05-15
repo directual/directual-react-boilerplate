@@ -6,11 +6,12 @@ import {
   Switch,
   Route,
   Redirect,
+  NavLink,
   useHistory, useLocation,
 } from 'react-router-dom'
 
 import { MainMenu } from './components/menu/menu'
-import { ProvideAuth, useAuth } from './auth'
+import { ProvideAuth, useAuth, authContext } from './auth'
 
 import Page1 from './pages/Page1'
 import Page2 from './pages/Page2'
@@ -52,6 +53,10 @@ function App() {
     <ProvideAuth>
       <Router>
         <MainMenu />
+
+        {/* {authContext.isAutorised() && 
+        <div>ХУЙ</div>} */}
+
         <Switch>
 
          {/* Public pages */}

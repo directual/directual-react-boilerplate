@@ -2,6 +2,8 @@ import { useHistory, useLocation } from 'react-router-dom'
 import React, { useState, useEffect } from 'react';
 import { useAuth } from "../auth";
 
+import { Loader } from '../components/loader/loader';
+
 export default function LoginPage() {
     let history = useHistory()
     let location = useLocation()
@@ -26,23 +28,25 @@ export default function LoginPage() {
             history.replace(from);
             setLoading(false)
         }).catch(e => {
-            setError("You login or password incorrect");
+            setError("You login or password is incorrect");
             setLoading(false)
         })
         return false
     }
 
     return (
-        <div>
-            <p>You must log in to view the the page {from.pathname}</p>
-            <input onChange={(e) => {
+        <div className="content login-form">
+            { /* Here is from path: */}
+            <p>You must log in to view the the page <b>{from.pathname}</b></p>
+            
+            <input type="text" placeholder="login" onChange={(e) => {
                 setUsername(e.target.value)
-            }} /><br />
-            <input onChange={(e) => {
+            }} />
+            <input type="password" placeholder="password" onChange={(e) => {
                 setPassword(e.target.value)
-            }} /><br />
-            {error}<br />
-            {!loading ? <button onClick={login}>Log in</button> : <span>loading...</span>}
+            }} />
+            {error && <div className="error">{error}</div>}
+            {!loading ? <button onClick={login}>Log in</button> : <Loader />}
         </div>
     )
 }

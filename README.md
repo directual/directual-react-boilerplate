@@ -34,6 +34,8 @@ Go to your [Directual account](https://my.directual.com/), into your app. Then t
 https://api.alfa.directual.com/fileUploaded/directual-site/3f218ee3-4616-43b5-bb3e-cad4c65b5eb6.jpg)
 Open `.env` in root directory. Copy you APP_ID there (example: `APP_ID=050e77bb-b0e6-4685-8712-a85774fad27`)
 
+**IMPORTANT**: You have to stop your app (Control+C) and type `npm start` again after editing `.env`
+
 ## Step 2. Testing authentication
 Go to Database section in Directual. Choose structure `App users`:
 

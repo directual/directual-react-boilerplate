@@ -1,32 +1,32 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { LogInLogOutButton } from '../loginLogout/loginLogoutButton'
-import { authContext } from '../../auth'
+import { authContext, useAuth } from '../../auth'
 
-
+import './menu.css'
 
 
 export function MainMenu() {
-  const auth = useAuth();
+  const authContext = useAuth();
   return (
-    <ul>
+    <ul className="main-menu">
       <li>
-        <NavLink to="/">Public Page 1</NavLink>
+        <NavLink exact to="/">Public Page 1</NavLink>
       </li>
       <li>
-        <NavLink to="/page2">Public Page 2</NavLink>
+        <NavLink exact to="/page2">Public Page 2</NavLink>
       </li>
 
       {/* JSX visible for authorised users only */}
       {authContext.isAutorised() && <li>
-        <NavLink to="/private">Private Page</NavLink>
+        <NavLink exact to="/private">Private Page</NavLink>
       </li>}
 
-       {/* JSX visible for users, who have role == 'admin'. You can apply any other value here */}
+      {/* JSX visible for users, who have role == 'admin'. You can apply any other value here */}
       {authContext.hasRole('admin') && <li>
-        <NavLink to="/admin">Admin Page</NavLink>
+        <NavLink exact to="/admin">Admin Page</NavLink>
       </li>}
-      <li>
+      <li className="rihgt-top">
         <LogInLogOutButton />
       </li>
     </ul>
@@ -35,28 +35,32 @@ export function MainMenu() {
 
 //example how it would look if we used class Component:
 
-// export class MainMenu extends React.Component{
-//     render() {
-//       const authContext = this.context;
-//       return  (
-//       <ul>
+// export class MainMenu extends React.Component {
+//   render() {
+//     const authContext = this.context;
+//     return (
+//       <ul className="main-menu">
 //         <li>
-//           <NavLink to="/">Public Page 1</NavLink>
+//           <NavLink exact to="/">Public Page 1</NavLink>
 //         </li>
 //         <li>
-//           <NavLink to="/page2">Public Page 2</NavLink>
+//           <NavLink exact to="/page2">Public Page 2</NavLink>
 //         </li>
+
+//         {/* JSX visible for authorised users only */}
 //         {authContext.isAutorised() && <li>
-//           <NavLink to="/private">Private Page</NavLink>
+//           <NavLink exact to="/private">Private Page</NavLink>
 //         </li>}
+
+//         {/* JSX visible for users, who have role == 'admin'. You can apply any other value here */}
 //         {authContext.hasRole('admin') && <li>
-//           <NavLink to="/admin">Admin Page</NavLink>
+//           <NavLink exact to="/admin">Admin Page</NavLink>
 //         </li>}
-//         <li>
+//         <li className="rihgt-top">
 //           <LogInLogOutButton />
 //         </li>
 //       </ul>
-//       )
-//     }
+//     )
 //   }
-//   MainMenu.contextType = authContext
+// }
+// MainMenu.contextType = authContext

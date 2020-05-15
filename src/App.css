@@ -1,1 +1,25 @@
 * {margin: 0; padding: 0;}
+
+body {
+    font-family: sans-serif;
+    font-size: 16px;
+}
+
+.content {
+    padding:20px
+}
+
+.login-form input {
+    font-size: 16px;
+    padding: 10px;
+    border:solid 1px #aaa;
+    outline: none;
+    margin: 15px 0;
+    border-radius: 6px;
+    display: block;
+}
+
+.error {
+    margin: 10px 0;
+    color: crimson;
+}
