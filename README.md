@@ -12,14 +12,14 @@ Directual matches React perfectly providing you with:
 
 **There are two options to use this boilerplate:**
 
-- [Bootstrap your app from scratch cloning this repo](#option1);
-- [Connect your existing React-app, following the instructions below](#option2).
+- [Bootstrap your app from scratch cloning this repo](#option-1.-bootstrap-your-app-from-scratch);
+- [Connect your existing React-app, following the instructions below](#option-2.-adding-directual-integration-to-your-existing-react-app)
 
 
-## Option 1. Bootstrap your app from scratch(#option1)
+## Option 1. Bootstrap your app from scratch
 
 
-### Step 1. Cloning directual-react-boilerplate repo {#option1}
+### Step 1. Cloning directual-react-boilerplate repo
 
 1. Open Terminal.
 2. Change the current working directory to the location where you want the new project to be made. If you need to create new directory type `mkdir NAME-OF-DIRECTORY` and then `cd NAME-OF-DIRECTORY`
@@ -50,7 +50,7 @@ Directual matches React perfectly providing you with:
 
 
 
-## Option 2. Adding Directual integration to your existing React app {#option2}
+## Option 2. Adding Directual integration to your existing React app
 
 ### Create a react bootstrap project and bind required dependencies
 
