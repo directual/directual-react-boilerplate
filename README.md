@@ -87,7 +87,7 @@ import React from 'react'
 export default function DashBoardPage () {
   return (
     <div>
-      <h2>Home</h2>
+      <h2>Dashboard</h2>
     </div>
   )
 }
@@ -96,7 +96,7 @@ export default function DashBoardPage () {
 ```javascript
 import React from 'react'
 
-export default function DashBoardPage () {
+export default function HomePage () {
   return (
     <div>
       <h2>Home</h2>
@@ -111,26 +111,7 @@ import { useHistory, useLocation } from 'react-router-dom'
 import React, { useState, useEffect } from 'react';
 import { ProvideAuth, useAuth } from "./../auth";
 
-export function ProfileBlock () {
-  let history = useHistory()
-  const auth = useAuth();
-  return auth.user ? (
-    <p>
-      Welcome, {auth.user}!
-      <button
-        onClick={() => {
-          auth.signout(() => history.push('/'))
-        }}
-      >
-        Sign out
-      </button>
-    </p>
-  ) : (
-    <p>You are not logged in.</p>
-  )
-}
-
-export default function LoginPage ({ authModule }) {
+export default function LoginPage () {
   let history = useHistory()
   let location = useLocation()
 
@@ -156,7 +137,7 @@ export default function LoginPage ({ authModule }) {
 
   return (
     <div>
-      <p>You must log in to view the page at {from.pathname}</p>
+      <p>You must log in to view the the page {from.pathname}</p>
       <input onChange={(e)=> {
         setUsername(e.target.value)
       }}/>
