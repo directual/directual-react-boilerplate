@@ -6,8 +6,11 @@
 
 ## Option 1. Clone this repo
 
-### Cloning `directual-react-boilerplate` repo
--
+### Cloning directual-react-boilerplate repo
+first, clone a
+
+`cd directual-react-boilerplate`
+`npm install`
 
 ### Copying your Directual APP ID into `.env` file
 -
