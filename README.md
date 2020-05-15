@@ -27,8 +27,7 @@ Directual matches React perfectly providing you with:
 4. Type `cd directual-react-boilerplate`
 5. Type `npm install`
 6. Type `npm start` Here is what you'll get:
-![Directual-React boilerplate](https://api.alfa.directual.com/fileUploaded/directual-site/4d6af50b-ca1b-4ab1-8f03-d2ae6b832201.jpg)
-
+![Directual-React boilerplate](https://api.alfa.directual.com/fileUploaded/directual-site/85b2f4d5-cbd0-4fbd-91ff-21716efb4349.jpg)
 ## Step 1. Copying your Directual APP ID into .env file
 Go to your [Directual account](https://my.directual.com/), into your app. Then to 'integration' section, API keys. Create new one and copy it:
 ![Api key](
@@ -47,6 +46,9 @@ This data structure contains all the users, with their logins (`id` property) an
 https://api.alfa.directual.com/fileUploaded/directual-site/c5e3db89-36cb-47fe-9750-38b0ccf2b7d7.jpg)
 Add a user to test authentiction in your app! Remember—password have to be converted to MD5 (there is a button near this field)
 
+After logging in you'll see Private page (for all users) and Admin page, if you added 'admin' to property `role` for your user in Directual.
+
+![Directual-React boilerplate](https://api.alfa.directual.com/fileUploaded/directual-site/081995d7-7003-4cc2-8a97-a51b43083d23.jpg)
 ## Step 3. Happy hacking!
 
 ### Setting up site structure
