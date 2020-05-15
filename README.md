@@ -171,9 +171,9 @@ export default function LoginPage ({ authModule }) {
 ```
 
 
-create `src/pages/auth.js` file and 
+create `src/auth.js` file and 
 
-`src/pages/auth.js`
+`src/auth.js`
 
 ```javascript
 import React, { useState, useEffect, useContext, createContext } from "react";
