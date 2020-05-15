@@ -314,7 +314,7 @@ function App () {
           <Route exact path="/">
             <HomePage />
           </Route>
-          <PrivateRoute path="/dashboard">
+          <PrivateRoute path="/dashboard" {* here you can add hasRole={'admin'} *}>
             <DashboardPage />
           </PrivateRoute>
         </Switch>
