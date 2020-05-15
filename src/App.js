@@ -80,7 +80,7 @@ export default function App() {
             <AdminPage />
           </PrivateRoute>
 
-          {/* This is for pages like your.app/books/the-bible, wthere 'the-bible' in nan Object ID */}
+          {/* This is for pages like your.app/books/the-bible, wthere 'the-bible' in an Object ID */}
           {/* <Route exact path="/table/:id" component={Child}/> */}
         </Switch>
       </Router>

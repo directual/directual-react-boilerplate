@@ -35,21 +35,8 @@
     display: flex;
     justify-content: flex-end;
     border: none;
+    margin: 0;
 }
 .main-menu li.rihgt-top a {
     border:none
-}
-
-button {
-    font-size: 18px;
-    padding: 10px 15px;
-    cursor: pointer;
-    border-radius: 6px;
-    background-color: #eee;
-    border:solid 1px #aaa;
-    outline: none;
-}
-button:active {
-    background-color: #333;
-    color: #fff;
 }

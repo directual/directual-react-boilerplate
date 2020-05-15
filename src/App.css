@@ -12,6 +12,21 @@ body {
     margin:10px 0
 }
 
+button {
+    font-size: 18px;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 6px;
+    background-color: #eee;
+    border:solid 1px #aaa;
+    outline: none;
+    margin: 5px 5px 5px 0;
+}
+button:active {
+    background-color: #333;
+    color: #fff;
+}
+
 .login-form input {
     font-size: 16px;
     padding: 10px;
@@ -25,4 +40,13 @@ body {
 .error {
     margin: 10px 0;
     color: crimson;
+}
+
+.request-info {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+}
+.request-info span {
+    margin: 5px 0;
 }
