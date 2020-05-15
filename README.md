@@ -322,10 +322,22 @@ export function PrivateRoute({ children, hasRole, ...rest }) {
 class MainMenu extends React.Component{
   render() {
     const authContext = this.context;
-    return  <div> 
-      user is auth {authContext.isAutorised() ? 'true' : 'false'} 
-      user has role admin : {authContext.hasRole('admin') ? 'true' : 'false'}
-    </div>
+    return  (
+    <ul>
+      <li>
+        <Link to="/">Public Page</Link>
+      </li>
+      {authContext.isAutorised() && <li>
+        <Link to="/private">Private Page</Link>
+      </li>}
+      {authContext.hasRole('admin') && <li>
+        <Link to="/admin">Admin Page</Link>
+      </li>}
+      <li>
+        <LogInLogOutButton />
+      </li>
+    </ul>
+    )
   }
 }
 MainMenu.contextType = authContext
@@ -337,22 +349,7 @@ function App () {
   })
   return ( <ProvideAuth>
     <Router>
-      <div>
-        <ul>
-          <li>
-            <Link to="/">Public Page</Link>
-          </li>
-          <li>
-            <Link to="/private">Private Page</Link>
-          </li>
-          <li>
-            <Link to="/admin">Admin Page</Link>
-          </li>
-        </ul>
-
-        <hr />
         <MainMenu />
-
         <Switch>
           <Route path="/login">
             <LoginPage />
@@ -367,7 +364,6 @@ function App () {
             <AdminPage />
           </PrivateRoute>
         </Switch>
-      </div>
     </Router>
     </ProvideAuth>
   )
