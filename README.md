@@ -155,8 +155,8 @@ export default function LoginPage () {
       }}/><br />
       <input onChange={(e)=> {
         setPassword(e.target.value)
-      }}/>
-      {error}
+      }}/><br />
+      {error}<br />
       <button onClick={login}>Log in</button>
     </div>
   )
