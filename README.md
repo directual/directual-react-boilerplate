@@ -12,11 +12,11 @@ Directual matches React perfectly providing you with:
 
 **There are two options to use this boilerplate:**
 
-- Clone this repo and start the project having a template;
+- Bootstrap your app from scratch cloning this repo;
 - Connect your existing React-app, following the instructions below.
 
 
-## Option 1. Clone this repo
+## Option 1. Bootstrap your app from scratch
 
 
 ### Step 1. Cloning directual-react-boilerplate repo
@@ -34,11 +34,16 @@ Directual matches React perfectly providing you with:
 ### Step 2. Testing authentication
 -
 
-### Step 3. Creating API-endpoints for Directual database 
--
+### Step 3. Happy hacking!
 
-### Step 4. Happy hacking!
--
+**Changing site structure**
+1
+
+**Getting data**
+2
+
+**Posting data**
+3
 
 ### Final Step. Building and packing you product in Docker container
 -
