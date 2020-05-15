@@ -29,7 +29,11 @@ Directual matches React perfectly providing you with:
 6. Type `npm start`
 
 ### Step 1. Copying your Directual APP ID into .env file
--
+Go to your [Directual account](https://my.directual.com/), into your app. Then to 'integration' section, API keys. Create new one and copy it:
+![Api key](
+https://api.alfa.directual.com/fileUploaded/directual-site/3f218ee3-4616-43b5-bb3e-cad4c65b5eb6.jpg)
+
+Open `.env` in root directory. Copy you APP_ID there (example: `APP_ID=050e77bb-b0e6-4685-8712-a85774fad27`)
 
 ### Step 2. Testing authentication
 -
