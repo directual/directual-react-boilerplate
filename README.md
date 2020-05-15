@@ -7,7 +7,7 @@ This is an example React project integrated with [Directual](https://www.directu
 - You can also download the [snapshot](https://api.alfa.directual.com/fileUploaded/React-boilerplate/c52983be-d61f-48d9-b5ec-5e5aba1eeb4a.json
 ) of Directual app.
 
-## Step-by-step instruction
+## Step-by-step instruction for creating your app from scratch
 ### 1. Create a react bootstrap project and bind required dependencies
 
 `npm install -g create-react-app`
@@ -80,26 +80,38 @@ module.exports = function(app) {
 ### 4. Create a simple site structure
 create `pages` folder and insert 3 files
 
-`src/pages/DashboardPage.js`
+`src/pages/PublicPage.js`
 ```javascript
 import React from 'react'
 
-export default function DashBoardPage () {
+export default function PublicPage () {
   return (
     <div>
-      <h2>Dashboard</h2>
+      <h2>Public Page</h2>
     </div>
   )
 }
 ```
-`src/pages/HomePage.js`
+`src/pages/PrivatePage.js`
 ```javascript
 import React from 'react'
 
-export default function HomePage () {
+export default function PrivatePage () {
   return (
     <div>
-      <h2>Home</h2>
+      <h2>Private Page</h2>
+    </div>
+  )
+}
+```
+`src/pages/AdminPage.js`
+```javascript
+import React from 'react'
+
+export default function AdminPage () {
+  return (
+    <div>
+      <h2>Admin Page</h2>
     </div>
   )
 }
@@ -140,7 +152,7 @@ export default function LoginPage () {
       <p>You must log in to view the the page {from.pathname}</p>
       <input onChange={(e)=> {
         setUsername(e.target.value)
-      }}/>
+      }}/><br />
       <input onChange={(e)=> {
         setPassword(e.target.value)
       }}/>
@@ -148,6 +160,38 @@ export default function LoginPage () {
       <button onClick={login}>Log in</button>
     </div>
   )
+}
+```
+
+
+create `src/LogInLogOutButton.js` file and 
+`src/LogInLogOutButton.js`
+```javascript
+
+import React from 'react'
+import { useAuth } from './auth'
+import {
+    Link, useHistory
+} from 'react-router-dom'
+
+export function LogInLogOutButton() {
+    let history = useHistory()
+    const auth = useAuth();
+    return (
+        <React.Fragment>
+            {auth.user ? (
+                <button
+                    onClick={() => {
+                        auth.signout(() => history.push('/'))
+                    }}
+                >
+                    Log out
+                </button>
+            ) : (
+                    <Link to="/login">
+                        <button>Log in</button></Link>
+                )}
+        </React.Fragment>)
 }
 ```
 
@@ -244,10 +288,12 @@ import {
   useLocation
 } from 'react-router-dom'
 import './App.css'
-import LoginPage, { ProfileBlock } from './pages/LoginPage'
-import HomePage from './pages/HomePage'
-import DashboardPage from './pages/DashboardPage'
+import LoginPage from './pages/LoginPage'
+import PrivatePage from './pages/PrivatePage'
+import PublicPage from './pages/PublicPage'
+import AdminPage from './pages/AdminPage'
 import { ProvideAuth, useAuth } from "./auth";
+import { LogInLogOutButton } from {./LogInLogOutButton}
 
 
 export function PrivateRoute({ children, hasRole, ...rest }) {
@@ -270,7 +316,8 @@ export function PrivateRoute({ children, hasRole, ...rest }) {
         />
     )
 }
-//example how use standart components
+
+//example how use standart React components:
 
 class MainMenu extends React.Component{
   render() {
@@ -293,29 +340,31 @@ function App () {
       <div>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/">Public Page</Link>
           </li>
           <li>
-            <Link to="/dashboard">Dashboard</Link>
+            <Link to="/private">Private Page</Link>
+          </li>
+          <li>
+            <Link to="/admin">Admin Page</Link>
           </li>
         </ul>
 
         <hr />
         <MainMenu />
 
-        <ProfileBlock />
-
-        <hr/>
-
         <Switch>
           <Route path="/login">
             <LoginPage />
           </Route>
           <Route exact path="/">
-            <HomePage />
+            <PublicPage />
           </Route>
-          <PrivateRoute path="/dashboard" { /* here you can add hasRole={'admin'} */ }>
-            <DashboardPage />
+          <PrivateRoute path="/private" >
+            <PrivatePage />
+          </PrivateRoute>
+          <PrivateRoute path="/admin" hasRole={'admin'} >
+            <AdminPage />
           </PrivateRoute>
         </Switch>
       </div>
