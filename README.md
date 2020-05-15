@@ -61,13 +61,6 @@ Here we can configure routing:
 `src/App.js`
 ```javascript
 ...
-// This is for pages like your.app/books/the-bible, wthere 'the-bible' in nan Object ID
-// 
-// const Child = ({ match }) => {
-//   return (
-//   <div>Object ID: {match.params.id}</div>
-//   )
-// } 
 
 function App() {
   return (
@@ -104,6 +97,7 @@ function App() {
     </ProvideAuth>
   );
 }
+
 ...
 ```
 
@@ -112,6 +106,7 @@ Here we can se an example of hidden JSX:
 `src/components/menu/menu.js`
 ```javascript
   ...
+
   <ul>
     <li>
       <NavLink to="/">Public Page 1</NavLink>
@@ -133,6 +128,7 @@ Here we can se an example of hidden JSX:
       <LogInLogOutButton />
     </li>
   </ul>
+  
   ...
 ```
 
