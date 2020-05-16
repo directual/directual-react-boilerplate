@@ -27,7 +27,7 @@ button:active {
     color: #fff;
 }
 
-.login-form input {
+.form input, form input {
     font-size: 16px;
     padding: 10px;
     border:solid 1px #aaa;

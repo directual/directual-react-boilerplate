@@ -35,7 +35,7 @@ export default function LoginPage() {
     }
 
     return (
-        <div className="content login-form">
+        <div className="content form">
             { /* Here is from path: */}
             <p>You must log in to view the page <b>{from.pathname}</b></p>
             
