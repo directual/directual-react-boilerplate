@@ -18,6 +18,14 @@ Directual matches React perfectly providing you with:
 
 # Option 1. Bootstrap your app from scratch
 
+1. Step 1. Cloning directual-react-boilerplate repo
+2. Step 2. Copying your Directual APP ID into .env file
+3. Step 3. Testing authentication
+4. Step 4. Happy hacking!
+   - Setting up site structure
+   - Getting data
+   - Posting data
+5. Final Step. Building and packing you product in Docker container
 
 ## Step 1. Cloning directual-react-boilerplate repo
 
@@ -28,7 +36,7 @@ Directual matches React perfectly providing you with:
 5. Type `npm install`
 6. Type `npm start` Here is what you'll get:
 ![Directual-React boilerplate](https://api.alfa.directual.com/fileUploaded/directual-site/85b2f4d5-cbd0-4fbd-91ff-21716efb4349.jpg)
-## Step 1. Copying your Directual APP ID into .env file
+## Step 2. Copying your Directual APP ID into .env file
 Go to your [Directual account](https://my.directual.com/), into your app. Then to 'integration' section, API keys. Create new one and copy it:
 ![Api key](
 https://api.alfa.directual.com/fileUploaded/directual-site/3f218ee3-4616-43b5-bb3e-cad4c65b5eb6.jpg)
@@ -36,7 +44,7 @@ Open `.env` in root directory. Copy you APP_ID there (example: `APP_ID=050e77bb-
 
 **IMPORTANT**: You have to stop your app (Control+C) and type `npm start` again after editing `.env`
 
-## Step 2. Testing authentication
+## Step 3. Testing authentication
 Go to Database section in Directual. Choose structure `App users`:
 
 ![WebUsers](https://api.alfa.directual.com/fileUploaded/directual-site/0cdf62fa-496e-4c49-8727-6cf680cbb5b5.jpg)
@@ -50,7 +58,7 @@ After logging in you'll see Private page (for all users) and Admin page, if you 
 
 ![Directual-React boilerplate](https://api.alfa.directual.com/fileUploaded/directual-site/081995d7-7003-4cc2-8a97-a51b43083d23.jpg)
 ![RBAC](https://api.alfa.directual.com/fileUploaded/directual-site/a37e7629-6ee1-4543-943d-b5fcf6b30825.jpg)
-## Step 3. Happy hacking!
+## Step 4. Happy hacking!
 
 ### Setting up site structure
 
