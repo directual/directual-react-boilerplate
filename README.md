@@ -17,6 +17,10 @@ Main approach in this boilerplate is [React Hooks](https://reactjs.org/docs/hook
 - [Bootstrap your app from scratch cloning this repo](#option-1-bootstrap-your-app-from-scratch);
 - [Connect your existing React-app (or a React-template) with Directual](#option-2-adding-directual-integration-to-your-existing-react-app)
 
+### We hope you enjoy Directual experience!
+
+Our team is happy to hear your feedback and suggestions on current boilerplate and the platform. If you spot a mistake, notice something that needs improvement, or have an idea for the new platform feature, do not hesitate to contact us on [community forum](http://forum.directual.com/) or via [support@directual.com](mailto:support@directual.com)
+
 
 # Option 1. Bootstrap your app from scratch
 
