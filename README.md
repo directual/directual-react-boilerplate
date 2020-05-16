@@ -487,3 +487,99 @@ function useProvideAuth() {
   };
 }
 ```
+
+### Add auth context
+
+Add `import { ProvideAuth, useAuth, authContext } from './auth'` 
+Wrap your app with `<ProvideAuth> </ProvideAuth>`
+
+Use the following constructions:
+
+### Log in form
+
+```javascript
+export default function LoginPage() {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
+
+    const auth = useAuth();
+
+    let login = () => {
+        auth.login(username, password).then(() => {
+            
+        }).catch(e => {
+            setError("You login or password is incorrect");
+        })
+        return false
+    }
+
+    return (
+        <div>
+            <input type="text" placeholder="login" onChange={(e) => {
+                setUsername(e.target.value)
+            }} />
+            <input type="password" placeholder="password" onChange={(e) => {
+                setPassword(e.target.value)
+            }} />
+            {error && <div className="error">{error}</div>}
+            <button onClick={login}>Log in</button>
+        </div>
+    )
+}
+```
+
+### Register
+
+Use regular POST-requests into `WebUser` data structure.
+
+### Use auth context in functional components
+```javascript
+import { useAuth } from './auth' // here is the difference!
+
+export default function Page3() {
+    const authContext = useAuth(); // here is the difference!
+    return (
+        <div className="content">
+            <h1>Page with hidden content</h1>
+
+            <p>This is <b>public</b> content. Try to login and see some hidden text!</p>
+
+            {authContext.isAutorised() &&
+                <p>This content is visible for <b>authorised users only</b></p>}
+
+            {authContext.hasRole('admin') &&
+                <p>This content is visible for a user with a <b>acertain role</b></p>}
+
+        </div>
+    )
+}
+```
+
+### Use auth context in class components
+```javascript
+import { authContext } from './auth' // here is the difference!
+
+export default class Page3 extends React.Component {
+    render() {
+        const authContext = this.context; // here is the difference!
+        return (
+            <div className="content">
+                <h1>Page with hidden content</h1>
+
+                <p>This is <b>public</b> content. Try to login and see some hidden text!</p>
+
+                {authContext.isAutorised() &&
+                    <p>This content is visible for <b>authorised users only</b></p>}
+
+                {authContext.hasRole('admin') &&
+                    <p>This content is visible for a user with a <b>acertain role</b></p>}
+
+            </div>
+        )
+    }
+}
+Page3.contextType = authContext
+```
+
+## Step 4. GET and POST data
