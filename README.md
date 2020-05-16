@@ -12,7 +12,7 @@ Directual matches React perfectly providing you with:
 
 Main approach in this boilerplate is [React Hooks](https://reactjs.org/docs/hooks-intro.html). You can also find an [example of using class Components](#using-auth-context-in-class-components)( see `src/pages/Page3.js`).
 
-###There are two options to use this boilerplate:
+### There are two options to use this boilerplate:
 
 - [Bootstrap your app from scratch cloning this repo](#option-1-bootstrap-your-app-from-scratch);
 - [Connect your existing React-app (or a React-template) with Directual](#option-2-adding-directual-integration-to-your-existing-react-app)
