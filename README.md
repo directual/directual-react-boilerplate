@@ -354,7 +354,15 @@ run command: `docker build -t final_image_name .`
 
 1. [Step 1. Bind required dependencies](#)
 2. [Step 2. Setup middleware proxy](#)
-3. []
+3. [Step 3. Add authentication] (#)
+   - [Adding auth context] ()
+   - [Log in form] ()
+   - [Registration] ()
+   - [Using auth context in functional components] ()
+   - [Using auth context in class components] ()
+4. [Final step. Work with Directual database] ()
+   - [Getting data] ()
+   - [Posting data] ()
 
 ## Step 1. Bind required dependencies
 
@@ -488,7 +496,7 @@ function useProvideAuth() {
 }
 ```
 
-### Add auth context
+### Adding auth context
 
 Add `import { ProvideAuth, useAuth, authContext } from './auth'` 
 Wrap your app with `<ProvideAuth> </ProvideAuth>`
@@ -529,11 +537,11 @@ export default function LoginPage() {
 }
 ```
 
-### Register
+### Registration
 
-Use regular POST-requests into `WebUser` data structure.
+Use regular [POST-requests]() into `WebUser` data structure.
 
-### Use auth context in functional components
+### Using auth context in functional components
 ```javascript
 import { useAuth } from './auth' // here is the difference!
 
@@ -556,7 +564,7 @@ export default function Page3() {
 }
 ```
 
-### Use auth context in class components
+### Using auth context in class components
 ```javascript
 import { authContext } from './auth' // here is the difference!
 
@@ -582,4 +590,8 @@ export default class Page3 extends React.Component {
 Page3.contextType = authContext
 ```
 
-## Step 4. GET and POST data
+## Final step. Work with Directual database
+
+### Getting data
+
+### Posting data
