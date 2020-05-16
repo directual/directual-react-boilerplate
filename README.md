@@ -352,22 +352,138 @@ run command: `docker build -t final_image_name .`
 
 # Option 2. Adding Directual integration to your existing React app
 
-## Create a react bootstrap project and bind required dependencies
+1. [Step 1. Bind required dependencies](#)
+2. [Step 2. Setup middleware proxy](#)
+3. []
 
-`npm install -g create-react-app`
+## Step 1. Bind required dependencies
 
-go to home directory and run command:
-
-`npm init react-app directual-example`
-
-go to the your new project folder:
-
-`cd directual-example`
-
-and install necessary libs: react-router-dom, directual-api:
+Install necessary libs:
 
 `npm install react-router-dom --save `
 
 `npm install directual-api --save `
 
 `npm install http-proxy-middleware --save `
+
+## Step 2. Setup middleware proxy
+
+Creating middleware proxy to directual.api resolves potential problems with CORS
+
+Go to your [Directual account](https://my.directual.com/), into your app. Then to 'integration' section, API keys. Create new one and copy it:
+![Api key](
+https://api.alfa.directual.com/fileUploaded/directual-site/3f218ee3-4616-43b5-bb3e-cad4c65b5eb6.jpg)
+Create `.env` in root directory of your project. Copy you APP_ID there (example: `APP_ID=050e77bb-b0e6-4685-8712-a85774fad27`)
+
+**IMPORTANT**: You have to stop your app (Control+C) and type `npm start` again after editing `.env`
+
+Create `src/setupProxy.js` file
+
+and copy the following there:
+```javascript
+const { createProxyMiddleware } = require('http-proxy-middleware');
+const API_HOST = 'https://api.alfa.directual.com/'
+// !Important, set APP_ID in , env file or set you APP ID here
+const APP_ID = process.env.APP_ID
+
+module.exports = function(app) {
+  app.use(
+    '/good/api',
+    createProxyMiddleware({
+      target: API_HOST,
+      changeOrigin: true,
+      pathRewrite(pathReq, req) {
+        const pathname = pathReq.split('?')[0];
+        let url = `${pathname}?appID=${APP_ID}`;
+        url = Object
+          .entries(req.query)
+          .reduce(
+            (newUrl, [key, value]) => `${newUrl}&${key}=${encodeURI(value)}`,
+            url,
+          );
+        return url;
+      }
+    })
+  );
+};
+```
+
+## Step 3. Add authentication
+
+Create `src/auth.js` file
+
+and copy the following there:
+```javascript
+import React, { useState, useEffect, useContext, createContext } from "react";
+import Directual from 'directual-api';
+
+const api = new Directual({apiHost: '/'});
+
+export const authContext = createContext();
+
+export function ProvideAuth({ children }) {
+  const auth = useProvideAuth();
+  return <authContext.Provider value={auth}>{children}</authContext.Provider>;
+}
+
+export const useAuth = () => {
+  return useContext(authContext);
+};
+
+// Provide hook that creates auth object and handles state
+function useProvideAuth() {
+  const [user, setUser] = useState(null);
+  const [sessionID, setSessionID] = useState(null);
+  const [role, setRole] = useState(null);
+
+  const login = (username, password) => {
+    return api.auth.login(username, password).then(res=>{
+      setUser(res.username)
+      setSessionID(res.sessionID)
+      setRole(res.role)
+      window.localStorage.setItem('sid', res.sessionID)
+    })
+  };
+
+  const signout = (cb) => {
+    return api.auth.logout('').then(res=>{
+      setUser(null)
+      setRole(null)
+      setSessionID(null)
+      window.localStorage.setItem('sid', null)
+      cb()
+    })
+  };
+
+  const isAutorised = () => {
+    return !!user
+  }
+
+  const hasRole = (roleCheck) => {
+    if(!roleCheck){
+      return true
+    }
+    return role === roleCheck
+  }
+
+  useEffect(() => {
+    let sid = window.localStorage.getItem('sid') || ''
+    api.auth.isAuthorize(sid, (status, token)=>{
+      if(status === true){
+        setUser(token.username)
+        setSessionID(token.token)
+        setRole(token.role)
+      }
+    })
+  }, []);
+
+  return {
+    user,
+    sessionID,
+    login,
+    isAutorised,
+    signout,
+    hasRole
+  };
+}
+```
