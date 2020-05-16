@@ -10,6 +10,8 @@ Directual matches React perfectly providing you with:
 - API-builder;
 - Integrations.
 
+Main approach in this boilerplate is [React Hooks](https://reactjs.org/docs/hooks-intro.html), but you can also find an example of using class Components (see `scr/pages/Page3.js`).
+
 **There are two options to use this boilerplate:**
 
 - [Bootstrap your app from scratch cloning this repo](#option-1-bootstrap-your-app-from-scratch);
