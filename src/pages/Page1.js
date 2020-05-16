@@ -3,23 +3,30 @@ import Directual from 'directual-api';
 import { useAuth } from '../auth'
 import { Loader } from '../components/loader/loader';
 
+// Example of getting data from Directual
+
+// Connect to Directual api
 const api = new Directual({ apiHost: '/' })
 
 export default function Page1() {
 
+  // connect authentication context
   const auth = useAuth();
-  const [payload, setPayload] = useState([]);
-  const [pageInfo, setPageInfo] = useState({});
-  const [loading, setLoading] = useState(true);
-  const [badRequest, setBadRequest] = useState();
-  const [pageLoading, setPageLoading] = useState(false);
-  const [pageNum, setPageNum] = useState(0);
-  const [pageSize, setPageSize] = useState(2);
 
+  // Hooks for handling state
+  const [payload, setPayload] = useState([]); // API response
+  const [pageInfo, setPageInfo] = useState({}); // API response metadata, e.g. number of objects
+  const [loading, setLoading] = useState(true); // initial loader
+  const [badRequest, setBadRequest] = useState(); // API error message
+  const [pageLoading, setPageLoading] = useState(false); // paging loader
+  const [pageNum, setPageNum] = useState(0); // Page number, by default = 0
+  const [pageSize, setPageSize] = useState(10); // Page size, bu default = 10
+
+  // API-endpoint details
   const dataStructure = '' // todo: write here sysname of your data structure
-  const endpoint = '' // todo: write here sysname of your API-endpoint
+  const endpoint = '' // todo: write here Method name of your API-endpoint
 
-  // Paging:
+  // Paging
   useEffect(() => {
     setPageLoading(true)
     getData()
@@ -34,13 +41,16 @@ export default function Page1() {
     setPageNum(pageNum - 1)
   }
 
-  // GET-request:
+  // GET-request
   function getData() {
     api
       // Data structure
       .structure(dataStructure)
-      // GET request + query params:
+      // GET request + query params (sessionID, page, pageSize by default)
       .getData(endpoint, { sessionID: auth.sessionID, page: pageNum, pageSize: pageSize })
+      // other possible query params:
+      // {{HttpRequest}} — any param for Filtering
+      // sort=FIELD_SYSNAME_1,desc,FIELD_SYSNAME_2,asc — sorting with multiple params
       .then((response) => {
         setPayload(response.payload)
         setPageInfo(response.pageInfo)
@@ -52,14 +62,6 @@ export default function Page1() {
         setPageLoading(false)
         console.log(e.response)
         setBadRequest(e.response.status + ', ' + e.response.data.msg)
-        if (!e.response) {
-          //todo: check you API endpoint, you must enable CORS header in settings
-
-        }
-        if (e.response && e.response.status === 403) {
-          //todo: api endpoint required authorisation
-
-        }
       })
   }
 
@@ -70,21 +72,25 @@ export default function Page1() {
       {loading && <Loader text='Loading...' />}
       {payload && !loading &&
         <div>
+
+          {/* API response */}
           <div className="request-info">
-            <span>Data structure: <b>{dataStructure}</b></span>
-            <span>API-endpoint: <b>{endpoint}</b></span>
-            <span>Payload: <b>{JSON.stringify(payload)}</b></span>
-            <span>Payload info: <b>{JSON.stringify(pageInfo)}</b></span>
+            <span>Data structure: <b>{dataStructure ? dataStructure : <span className="error">not provided</span>}</b></span>
+            <span>API-endpoint: <b>{endpoint ? endpoint : <span className="error">not provided</span>}</b></span>
+            <span>Payload: <code>{JSON.stringify(payload)}</code></span>
+            <span>Payload info: <code>{JSON.stringify(pageInfo)}</code></span>
             {badRequest && <span className="error">Error: <b>{badRequest}</b></span>}
           </div>
 
+          {/* Paging */}
           {pageLoading && <Loader text='Loading...' />}
           {!pageLoading &&
             <div>
               <button disabled={(pageNum <= 0) && "disabled"} onClick={prevPage}>prev</button>
-              <button disabled={pageInfo && !badRequest && ((pageNum == pageInfo.totalPage - 1) && "disabled")} onClick={nextPage}>next</button>
+              <button disabled={(badRequest || (pageNum >= pageInfo.totalPage - 1)) && "disabled"} onClick={nextPage}>next</button>
             </div>
           }
+          
         </div>}
     </div>
   )
