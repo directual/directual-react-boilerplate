@@ -18,14 +18,14 @@ Directual matches React perfectly providing you with:
 
 # Option 1. Bootstrap your app from scratch
 
-1. Step 1. Cloning directual-react-boilerplate repo
-2. Step 2. Copying your Directual APP ID into .env file
-3. Step 3. Testing authentication
-4. Step 4. Happy hacking!
-   - Setting up site structure
-   - Getting data
-   - Posting data
-5. Final Step. Building and packing you product in Docker container
+1. [Step 1. Cloning directual-react-boilerplate repo](#step-1-cloning-directual-react-boilerplate-repo)
+2. [Step 2. Copying your Directual APP ID into .env file](#step-2-copying-your-directual-app-id-into-env-file)
+3. [Step 3. Testing authentication](#step-3-testing-authentication)
+4. [Step 4. Happy hacking!](#step-4-happy-hacking)
+   - [Setting up site structure](#setting-up-site-structure)
+   - [Getting data](#getting-data)
+   - [Posting data](#posting-data)
+5. [Final Step. Building and packing you product in Docker container](#final-step-building-and-packing-you-product-in-docker-container)
 
 ## Step 1. Cloning directual-react-boilerplate repo
 
