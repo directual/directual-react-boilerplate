@@ -352,17 +352,17 @@ run command: `docker build -t final_image_name .`
 
 # Option 2. Adding Directual integration to your existing React app
 
-1. [Step 1. Bind required dependencies](#)
-2. [Step 2. Setup middleware proxy](#)
-3. [Step 3. Add authentication] (#)
-   - [Adding auth context] ()
-   - [Log in form] ()
-   - [Registration] ()
-   - [Using auth context in functional components] ()
-   - [Using auth context in class components] ()
-4. [Final step. Work with Directual database] ()
-   - [Getting data] ()
-   - [Posting data] ()
+1. [Step 1. Bind required dependencies](#step-1-bind-required-dependencies)
+2. [Step 2. Setup middleware proxy](#step-2-setup-middleware-proxy)
+3. [Step 3. Add authentication](#step-3-add-authentication)
+   - [Adding auth context](#adding-auth-context)
+   - [Log in form](#log-in-form)
+   - [Registration](#registration)
+   - [Using auth context in functional components](#using-auth-context-in-functional-components)
+   - [Using auth context in class components](#using-auth-context-in-class-components)
+4. [Final step. Work with Directual database](#final-step-work-with-directual-database)
+   - [Getting data](#getting-data-1)
+   - [Posting data](#posting-data-1)
 
 ## Step 1. Bind required dependencies
 
@@ -539,7 +539,7 @@ export default function LoginPage() {
 
 ### Registration
 
-Use regular [POST-requests]() into `WebUser` data structure.
+Use regular [POST-requests](#posting-data-1) into `WebUser` data structure.
 
 ### Using auth context in functional components
 ```javascript
