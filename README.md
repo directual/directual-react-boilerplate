@@ -15,7 +15,7 @@ Main approach in this boilerplate is [React Hooks](https://reactjs.org/docs/hook
 **There are two options to use this boilerplate:**
 
 - [Bootstrap your app from scratch cloning this repo](#option-1-bootstrap-your-app-from-scratch);
-- [Connect your existing React-app, following the instructions below](#option-2-adding-directual-integration-to-your-existing-react-app)
+- [Connect your existing React-app (or a React-template) with Directual](#option-2-adding-directual-integration-to-your-existing-react-app)
 
 
 # Option 1. Bootstrap your app from scratch

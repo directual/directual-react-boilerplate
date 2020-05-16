@@ -20,7 +20,7 @@ export default function Page3() {
 }
 
 // Example how it would look if we used class Component:
-// NOTE: we use authContext instead of useAuth from 'auth.js'
+// IMPORTNT: for class Components we use authContext instead of useAuth from 'auth.js'
 
 // export default class Page3 extends React.Component {
 //     render() {
