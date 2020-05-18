@@ -175,7 +175,7 @@ Page3.contextType = authContext
 
 ### Getting data
 
-Don't forget to configure [API-endpoints](https://www.directual.com/academy/api-builder-basics) in Directual
+Don't forget to configure [API-endpoints](https://directual.gitbook.io/directual-documentation/api-integrations/api-endpoints-security-layer) in Directual
 
 Have a look at
 `src/pages/Page1.js`
@@ -282,7 +282,7 @@ export default function Page1() {
 
 ### Posting data
 
-Don't forget to configure [API-endpoints](https://www.directual.com/academy/api-builder-basics) in Directual
+Don't forget to configure [API-endpoints](https://directual.gitbook.io/directual-documentation/api-integrations/api-endpoints-security-layer) in Directual
 
 Have a look at
 `src/pages/Page2.js`
