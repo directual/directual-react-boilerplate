@@ -1,5 +1,5 @@
 const { createProxyMiddleware } = require('http-proxy-middleware');
-const API_HOST = 'https://api.alfa.directual.com/'
+const API_HOST = 'https://api.directual.com/'
 // !Important, set APP_ID in , env file or set you APP ID here
 const APP_ID = process.env.APP_ID
 
