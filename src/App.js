@@ -17,6 +17,7 @@ import Page1 from './pages/Page1'
 import Page2 from './pages/Page2'
 import Page3 from './pages/Page3'
 import PrivatePage from './pages/PrivatePage'
+import Websocket from './pages/Websocket'
 import AdminPage from './pages/AdminPage'
 import LoginPage from './pages/login'
 
@@ -42,12 +43,12 @@ function PrivateRoute({ children, hasRole, ...rest }) {
 }
 
 // This is for pages like your.app/books/the-bible, wthere 'the-bible' in nan Object ID
-// 
+//
 // const Child = ({ match }) => {
 //   return (
 //   <div>Object ID: {match.params.id}</div>
 //   )
-// } 
+// }
 
 export default function App() {
   return (
@@ -69,12 +70,15 @@ export default function App() {
           <Route exact path="/page3">
             <Page3 />
           </Route>
-          
+
           {/* Pages for any authorised user */}
           <PrivateRoute path="/private">
             <PrivatePage />
           </PrivateRoute>
-          
+          <PrivateRoute path="/websocket">
+            <Websocket />
+          </PrivateRoute>
+
           {/* Pages for users, who have role == 'admin'. You can apply any other value here */}
           <PrivateRoute path="/admin" hasRole={'admin'}>
             <AdminPage />

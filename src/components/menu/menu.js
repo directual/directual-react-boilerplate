@@ -24,6 +24,9 @@ export function MainMenu() {
       {authContext.isAutorised() && <li>
         <NavLink exact to="/private">Private Page</NavLink>
       </li>}
+      {authContext.isAutorised() && <li>
+        <NavLink exact to="/websocket">Websocket Page</NavLink>
+      </li>}
 
       {/* JSX visible for users, who have role == 'admin'. You can apply any other value here */}
       {authContext.hasRole('admin') && <li>
