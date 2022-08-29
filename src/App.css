@@ -50,3 +50,7 @@ button:active {
 .request-info span {
     margin: 5px 0;
 }
+
+.request-info code {
+    opacity: .5;
+}
